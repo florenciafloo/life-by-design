@@ -1,0 +1,130 @@
+/* Game-first room presentation inspired by cozy portrait life-sim games. */
+.page-content:has(.editor-card) {
+  width: min(1120px, 100%);
+  padding-top: 20px;
+}
+.page-content:has(.editor-card) > .eyebrow,
+.page-content:has(.editor-card) > h1,
+.page-content:has(.editor-card) > .subtle {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-content:has(.editor-card) > h1 {
+  margin-top: 4px;
+  font-size: clamp(26px, 3vw, 36px);
+}
+.page-content:has(.editor-card) > .subtle { margin-bottom: 12px; }
+
+.editor-card {
+  padding: clamp(12px, 2vw, 22px);
+  overflow: hidden;
+  border: 2px solid #aa8170;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fff8e9, #fff0dc);
+  box-shadow: 0 6px 0 #d9b8a2, 0 14px 30px rgba(112,87,75,.08);
+}
+.editor-heading {
+  min-height: 48px;
+  padding: 2px 6px;
+}
+.editor-heading .eyebrow { color: #a18461; }
+.editor-heading h2 { font-size: clamp(20px, 2.5vw, 28px); }
+.editor-tools .btn { border-radius: 12px; }
+.room-tabs {
+  width: fit-content;
+  max-width: 100%;
+  margin: 13px auto 15px;
+  padding: 5px;
+  border: 1.5px solid #e8cfb9;
+  border-radius: 18px;
+  background: rgba(255,253,247,.8);
+  box-shadow: inset 0 2px 4px rgba(112,87,75,.05);
+}
+.room-tab {
+  min-height: 38px;
+  padding: 8px 15px;
+  border: 1.5px solid transparent;
+  border-radius: 13px;
+  font-size: 12px;
+}
+.room-tab.active {
+  border-color: #e6b3a5;
+  background: #ffe4dc;
+  box-shadow: 0 2px 0 #dfb4a5;
+}
+.editor-card .room-scene {
+  width: min(100%, 840px);
+  min-height: 0;
+  aspect-ratio: 1.34 / 1;
+  margin: 0 auto;
+  border-width: 3px;
+  border-radius: 18px;
+  background-size: 8.33% 10%, 8.33% 10%, 100% 100%;
+  box-shadow: inset 0 0 0 6px rgba(255,255,255,.5), 0 5px 0 #b88e7e;
+}
+.editor-card .room-window {
+  left: 8%; top: 8%; width: 23%; height: 38%;
+}
+.editor-card .room-sofa { left: 36%; bottom: 14%; width: 36%; height: 25%; }
+.editor-card .room-rug { left: 29%; bottom: 5%; width: 49%; height: 15%; }
+.editor-card .room-hint {
+  justify-content: center;
+  margin: 13px 0 2px;
+  font-size: 11px;
+}
+.page-content:has(.editor-card) > .grid.grid-2.section {
+  gap: 12px;
+}
+.page-content:has(.editor-card) > .grid.grid-2.section > .card {
+  background: #fffaf0;
+  border-radius: 18px;
+}
+.inventory-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+.inventory-item {
+  min-height: 62px;
+  border-radius: 15px;
+  background: #fff4e5;
+  box-shadow: 0 2px 0 rgba(112,87,75,.08);
+}
+.inventory-item.placed { background: #eff1dc; }
+
+/* The room should feel like the game screen, not another dashboard card, on phones. */
+@media (max-width: 700px) {
+  .page-content:has(.editor-card) {
+    padding: 12px 10px 100px;
+  }
+  .page-content:has(.editor-card) > .eyebrow { font-size: 9px; }
+  .page-content:has(.editor-card) > h1 { font-size: 25px; margin-bottom: 5px; }
+  .page-content:has(.editor-card) > .subtle { font-size: 11px; line-height: 1.45; }
+  .editor-card {
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 0 #d9b8a2;
+  }
+  .editor-heading { padding: 0 3px; }
+  .editor-heading h2 { font-size: 19px; }
+  .editor-heading .eyebrow { font-size: 8px; }
+  .editor-tools .btn { padding: 7px 9px; font-size: 9px; }
+  .room-tabs { margin: 10px auto 12px; gap: 3px; }
+  .room-tab { min-height: 34px; padding: 7px 10px; font-size: 10px; }
+  .editor-card .room-scene {
+    width: min(100%, 470px);
+    aspect-ratio: .74 / 1;
+    min-height: min(64vh, 570px);
+    border-radius: 14px;
+    background-size: 10% 7.7%, 10% 7.7%, 100% 100%;
+  }
+  .editor-card .room-window { left: 8%; top: 8%; width: 28%; height: 29%; }
+  .editor-card .room-sofa { left: 34%; bottom: 17%; width: 41%; height: 20%; }
+  .editor-card .room-rug { left: 24%; bottom: 8%; width: 54%; height: 12%; }
+  .editor-card .room-plant { right: 7%; bottom: 16%; }
+  .editor-card .room-lamp { left: 8%; bottom: 17%; }
+  .editor-card .room-hint { font-size: 9px; margin: 11px 2px 1px; text-align: center; }
+  .page-content:has(.editor-card) > .grid.grid-2.section { gap: 10px; }
+  .page-content:has(.editor-card) > .grid.grid-2.section > .card { padding: 14px; }
+  .page-content:has(.editor-card) .badge-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .editor-card *, .editor-card *::before, .editor-card *::after { scroll-behavior: auto !important; }
+}
