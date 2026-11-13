@@ -1,0 +1,168 @@
+/* Extra illustrated finishing pass for the cozy room editor. */
+.room-scene {
+  isolation: isolate;
+  border: 3px solid #9a7567;
+  border-radius: 20px;
+  background-color: #fff0cf;
+  background-image:
+    linear-gradient(rgba(219, 187, 153, .52) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(219, 187, 153, .52) 2px, transparent 2px),
+    linear-gradient(180deg, #f8f0d9 0 42%, #f9e5bc 42% 100%);
+  background-size: 10% 12.5%, 10% 12.5%, 100% 100%;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,.55), inset 0 -12px 24px rgba(165,119,82,.08);
+}
+.room-scene:before {
+  content: '♡   ✿   ♡';
+  position: absolute;
+  z-index: 1;
+  top: 3%;
+  left: 39%;
+  padding: 3px 14px 5px;
+  border: 2px solid #aa8170;
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  background: #ffe4d5;
+  color: #e89a91;
+  font-size: clamp(10px, 1.7vw, 15px);
+  letter-spacing: .3em;
+  box-shadow: 0 3px 0 rgba(112,87,75,.1);
+  pointer-events: none;
+}
+.room-scene:after {
+  z-index: 8;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(255,255,255,.45), transparent 30%),
+    radial-gradient(ellipse at 50% 45%, transparent 48%, rgba(255,244,221,.15) 100%);
+  pointer-events: none;
+}
+.room-window {
+  overflow: visible;
+  border: 6px solid #fff9ec;
+  outline: 2px solid #9a7567;
+  box-shadow: 0 3px 0 rgba(112,87,75,.12);
+}
+.room-window:before, .room-window:after { z-index: 2; }
+.room-window:after {
+  content: '☀';
+  display: grid;
+  place-items: start center;
+  padding-top: 8px;
+  color: #f2c565;
+  font-size: clamp(13px, 2vw, 20px);
+  text-shadow: 0 0 9px rgba(255,255,255,.8);
+}
+.room-floor {
+  opacity: .24;
+  background-image: repeating-linear-gradient(90deg, transparent 0 9.5%, rgba(155,113,84,.58) 9.7% 10%);
+}
+.room-rug {
+  border-radius: 48% 52% 45% 55%;
+  box-shadow: inset 0 0 0 4px rgba(255,255,255,.45), 0 4px 0 rgba(164,112,96,.18);
+  animation: rug-breathe 5s ease-in-out infinite;
+}
+.room-sofa {
+  border: 2px solid #9a7567;
+  box-shadow: inset 0 -12px #df8d86, 0 5px 0 #b88e7e;
+}
+.room-sofa:before { border: 2px solid #9a7567; }
+.room-plant, .room-lamp, .room-deco {
+  cursor: pointer;
+  transform-origin: 50% 90%;
+  transition: filter .2s ease, transform .2s ease;
+}
+.room-plant:hover, .room-lamp:hover, .room-deco:hover {
+  transform: translateY(-4px) rotate(-3deg) scale(1.08);
+  filter: drop-shadow(0 5px 2px rgba(112,87,75,.2));
+}
+.room-furniture {
+  z-index: 6;
+  border: 2px solid #987465;
+  border-radius: 18px 18px 13px 13px;
+  background: color-mix(in srgb, var(--furniture, #f4d8c6) 35%, #fffdf7);
+  box-shadow: 0 4px 0 #c6a592, inset 0 0 0 3px rgba(255,255,255,.78);
+  transition: left .18s cubic-bezier(.2,.8,.2,1), top .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s, filter .18s;
+  touch-action: none;
+}
+.room-furniture:hover { filter: brightness(1.04); box-shadow: 0 6px 0 #c6a592, 0 0 0 4px rgba(255,255,255,.55); }
+.room-furniture.selected { outline: 3px dashed #9aa875; outline-offset: 3px; }
+.room-furniture.just-placed { animation: furniture-arrive .42s cubic-bezier(.2,.8,.2,1); }
+.room-furniture.boop { animation: furniture-boop .42s ease; }
+.avatar-player {
+  z-index: 7;
+  width: 58px;
+  height: 68px;
+  filter: drop-shadow(0 4px 0 rgba(112,87,75,.16));
+  transition: left .22s cubic-bezier(.2,.8,.2,1), top .22s cubic-bezier(.2,.8,.2,1);
+}
+.avatar-player:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  bottom: 1px;
+  left: 50%;
+  width: 40px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(130,100,77,.18);
+}
+.avatar-player.walking .avatar-body { animation: avatar-step .18s ease-in-out 2; }
+.avatar-player.wave .avatar-body { animation: avatar-wave .5s ease-in-out; }
+.room-sparkle {
+  position: absolute;
+  z-index: 9;
+  pointer-events: none;
+  color: #f4c968;
+  font-size: 17px;
+  text-shadow: 0 1px #fff9e8;
+  animation: sparkle-pop .7s ease-out forwards;
+}
+.room-speech {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  top: -27px;
+  width: max-content;
+  max-width: 150px;
+  transform: translateX(-50%);
+  padding: 5px 9px;
+  border: 1.5px solid #a87f6f;
+  border-radius: 12px 12px 12px 3px;
+  background: #fffdf7;
+  color: #70574b;
+  font: 600 10px 'DM Sans', system-ui, sans-serif;
+  box-shadow: 0 2px 0 rgba(112,87,75,.12);
+  animation: speech-pop .2s ease-out;
+  pointer-events: none;
+}
+.room-tab { transition: transform .16s ease, background .16s ease; }
+.room-tab:hover { transform: translateY(-2px); }
+.inventory-item { transition: transform .16s ease, box-shadow .16s ease; }
+.inventory-item:hover { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 4px 0 rgba(112,87,75,.1); }
+.store-item .item-art { position: relative; overflow: hidden; }
+.store-item .item-art:after {
+  content: '✦'; position: absolute; top: 7px; right: 10px; color: #e2bd65; font-size: 13px;
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes avatar-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+@keyframes avatar-step { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(7deg); } }
+@keyframes avatar-wave { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-12deg) translateY(-4px); } 70% { transform: rotate(12deg) translateY(-2px); } }
+@keyframes furniture-arrive { 0% { opacity: .4; scale: .65; } 70% { scale: 1.12; } 100% { opacity: 1; scale: 1; } }
+@keyframes furniture-boop { 0%, 100% { rotate: 0; } 30% { rotate: -9deg; scale: 1.12; } 65% { rotate: 7deg; scale: 1.07; } }
+@keyframes sparkle-pop { 0% { opacity: 0; transform: translate(-50%, 6px) scale(.5) rotate(-20deg); } 35% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -25px) scale(1.2) rotate(20deg); } }
+@keyframes speech-pop { from { opacity: 0; translate: 0 4px; } to { opacity: 1; translate: 0 0; } }
+@keyframes rug-breathe { 0%, 100% { scale: 1; } 50% { scale: 1.015; } }
+@keyframes twinkle { 0%, 100% { opacity: .45; rotate: 0deg; } 50% { opacity: 1; rotate: 18deg; } }
+
+@media (max-width: 540px) {
+  .room-scene { min-height: 290px; }
+  .room-scene:before { left: 34%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .room-scene *, .room-scene *:before, .room-scene *:after, .store-item .item-art:after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

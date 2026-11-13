@@ -14,6 +14,7 @@ Open `index.html` in a modern browser. No build step or package installation is 
 - Cozy illustrated virtual rooms: living room, bedroom, and kitchen
 - Drag furniture to arrange it; placements snap to the room grid and persist
 - Tap empty floor or use arrow keys/WASD to move the animated avatar
+- Furniture tap reactions, placement animations, sparkles, and friendly speech bubbles
 - Decor inventory and coin shop
 - Example reward vouchers clearly marked as simulated
 - Responsive mobile-friendly navigation and touch interactions
@@ -37,6 +38,8 @@ This is a front-end demo. Data is stored locally in the current browser and is n
 ├── index.html
 ├── styles.css
 ├── editor.css
+├── room-effects.css
+├── room-effects.js
 ├── app.js
 └── README.md
 ```
