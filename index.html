@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8e9">
+  <meta name="description" content="A cozy little space to plan your life, celebrate small wins, and make a home that feels like you.">
+  <title>LIFE, BY DESIGN — Your life. Your choices. Your world.</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Life, By Design home">
+        <span class="brand-mark">✿</span>
+        <span class="brand-title">LIFE, <i>by design</i></span>
+        <span class="brand-tagline">YOUR LIFE. YOUR CHOICES. YOUR WORLD.</span>
+      </a>
+      <nav class="nav-list">
+        <button class="nav-link active" data-view="home"><span>⌂</span>Home</button>
+        <button class="nav-link" data-view="life"><span>✎</span>My Life</button>
+        <button class="nav-link" data-view="world"><span>⌂</span>My World</button>
+        <button class="nav-link" data-view="rewards"><span>✧</span>Rewards</button>
+        <button class="nav-link" data-view="profile"><span>♡</span>Profile</button>
+      </nav>
+      <div class="sidebar-note"><span>🌿</span><p>There’s no one right way to live. Make room for the life that feels like yours.</p></div>
+      <div class="sidebar-footer">A softer way to make plans.</div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <span class="topbar-date" id="todayLabel"></span>
+        <div class="topbar-actions">
+          <button class="coin-balance" data-view="rewards" aria-label="Open rewards"><span>🟡</span><strong id="coinBalance">0</strong><small>COINS</small></button>
+          <button class="avatar-button" data-view="profile" aria-label="Open profile">🌼</button>
+        </div>
+      </header>
+      <div id="app" class="page-content" aria-live="polite"></div>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
