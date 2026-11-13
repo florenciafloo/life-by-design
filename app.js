@@ -17,12 +17,12 @@
   ];
 
   const decor = [
-    { id: 'plant', name: 'Sunny little plant', icon: '🪴', price: 35, description: 'A leafy friend for your window.', accent: '#a8bf8a' },
-    { id: 'lamp', name: 'Evening glow lamp', icon: '🏮', price: 45, description: 'Make your room feel extra cozy.', accent: '#f9c76e' },
-    { id: 'art', name: 'Little daydream print', icon: '🖼️', price: 55, description: 'A gentle reminder to dream.', accent: '#f2d4b6' },
-    { id: 'cushion', name: 'Blush cushion', icon: '🛋️', price: 30, description: 'A soft finishing touch.', accent: '#efb7ac' },
-    { id: 'flowers', name: 'Market flowers', icon: '💐', price: 40, description: 'A pop of color for your home.', accent: '#e4c6b4' },
-    { id: 'star-rug', name: 'Starry rug', icon: '🌙', price: 65, description: 'A little magic underfoot.', accent: '#d4c76a' }
+    { id: 'plant', name: 'Sunny little plant', icon: '🪴', price: 35, description: 'A leafy friend for your window.', accent: '#a7bb8a' },
+    { id: 'lamp', name: 'Evening glow lamp', icon: '🏮', price: 45, description: 'Make your room feel extra cozy.', accent: '#f9c76f' },
+    { id: 'art', name: 'Little daydream print', icon: '🖼️', price: 55, description: 'A gentle reminder to dream.', accent: '#efcfb2' },
+    { id: 'cushion', name: 'Blush cushion', icon: '🛋️', price: 30, description: 'A soft finishing touch.', accent: '#eaaf9d' },
+    { id: 'flowers', name: 'Market flowers', icon: '💐', price: 40, description: 'A pop of color for your home.', accent: '#d7b89a' },
+    { id: 'star-rug', name: 'Starry rug', icon: '🌙', price: 65, description: 'A little magic underfoot.', accent: '#d9c86f' }
   ];
 
   const sampleRewards = [
@@ -47,11 +47,12 @@
     journal: '',
     transactions: [{ label: 'Welcome bonus', amount: 120, date: dateKey() }],
     redemptions: [],
-    avatar: { x: 52, y: 62 },
+    avatar: { x: 50, y: 62 },
     roomLayout: [
-      { id: 'plant', x: 20, y: 22 },
-      { id: 'lamp', x: 72, y: 22 }
-    ]
+      { id: 'plant', x: 18, y: 22 },
+      { id: 'lamp', x: 70, y: 20 }
+    ],
+    selectedFurniture: null
   };
 
   let state = loadState();
@@ -182,7 +183,7 @@
     const placed = state.roomLayout.map(slot => {
       const item = getItemById(slot.id);
       if (!item) return '';
-      return `<div class="room-furniture" data-item-id="${item.id}" style="left:${slot.x}%; top:${slot.y}%; --furniture:${item.accent};">${item.icon}</div>`;
+      return `<div class="room-furniture ${state.selectedFurniture === item.id ? 'selected' : ''}" data-item-id="${item.id}" style="left:${slot.x}%; top:${slot.y}%; --furniture:${item.accent};">${item.icon}</div>`;
     }).join('');
 
     return `
@@ -431,10 +432,7 @@
         <div class="eyebrow">Progress</div>
         <h2>Lifestyle growth</h2>
         <div class="xp-bar"><span style="width:${progress}%"></span></div>
-        <div class="mini-row">
-          <span>Level ${level}</span>
-          <span>${state.xp} xp</span>
-        </div>
+        <div class="mini-row"><span>Level ${level}</span><span>${state.xp} xp</span></div>
       </section>
     `;
   }
@@ -447,9 +445,7 @@
     const roomEditor = document.getElementById('roomEditor');
     if (roomEditor) {
       const placedItems = roomEditor.querySelectorAll('.room-furniture');
-      placedItems.forEach(item => {
-        item.addEventListener('pointerdown', startFurnitureDrag);
-      });
+      placedItems.forEach(item => item.addEventListener('pointerdown', startFurnitureDrag));
 
       roomEditor.addEventListener('pointerdown', event => {
         if (event.target === roomEditor || event.target.closest('.room-furniture')) return;
@@ -474,33 +470,30 @@
     const existing = state.roomLayout.find(slot => slot.id === itemId);
     if (!existing) return;
 
-    dragState = {
-      itemId,
-      pointerId: event.pointerId,
-      room: document.getElementById('roomEditor')
-    };
-
+    dragState = { itemId, room: document.getElementById('roomEditor') };
+    state.selectedFurniture = itemId;
     item.setPointerCapture(event.pointerId);
     event.preventDefault();
+    render();
   }
 
   document.addEventListener('pointermove', event => {
     if (!dragState || !dragState.room) return;
     const room = dragState.room;
     const rect = room.getBoundingClientRect();
-    const x = clamp(((event.clientX - rect.left) / rect.width) * 100, 9, 92);
-    const y = clamp(((event.clientY - rect.top) / rect.height) * 100, 10, 82);
+    const x = clamp(((event.clientX - rect.left) / rect.width) * 100, 12, 88);
+    const y = clamp(((event.clientY - rect.top) / rect.height) * 100, 20, 82);
 
     const target = state.roomLayout.find(slot => slot.id === dragState.itemId);
     if (!target) return;
 
-    target.x = x;
-    target.y = y;
+    target.x = Number(x.toFixed(1));
+    target.y = Number(y.toFixed(1));
 
     const itemNode = room.querySelector(`.room-furniture[data-item-id="${dragState.itemId}"]`);
     if (itemNode) {
-      itemNode.style.left = `${x}%`;
-      itemNode.style.top = `${y}%`;
+      itemNode.style.left = `${target.x}%`;
+      itemNode.style.top = `${target.y}%`;
     }
 
     save();
@@ -508,6 +501,8 @@
 
   document.addEventListener('pointerup', () => {
     dragState = null;
+    state.selectedFurniture = null;
+    render();
   });
 
   document.addEventListener('keydown', event => {
@@ -625,9 +620,10 @@
     }
 
     if (action === 'focus-item') {
+      state.selectedFurniture = id;
+      save(); render();
       const item = getItemById(id);
-      if (!item) return;
-      notify(`${item.name} is ready to place.`);
+      if (item) notify(`${item.name} is ready to place.`);
       return;
     }
 

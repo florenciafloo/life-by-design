@@ -179,7 +179,13 @@ h2 { font-size: 24px; margin-bottom: 8px; }
   display: grid; place-items: center; border-radius: 16px; font-size: 30px;
   background: rgba(255,255,255,.42); border: 2px solid rgba(112,87,75,.15); box-shadow: 0 3px 0 rgba(112,87,75,.1);
 }
-.room-furniture:before { content: ''; position: absolute; inset: 8px; border-radius: 12px; background: color-mix(in srgb, var(--furniture) 18%, white); }
+.room-furniture.selected {
+  border-color: rgba(130, 155, 93, 0.9);
+  box-shadow: 0 0 0 3px rgba(150, 178, 122, 0.18);
+}
+.room-furniture:before {
+  content: ''; position: absolute; inset: 8px; border-radius: 12px; background: rgba(255,255,255,0.42);
+}
 .room-furniture { --furniture: #eac1ad; }
 .room-hint { margin-top: 10px; color: var(--muted); font-size: 11px; }
 
@@ -228,7 +234,7 @@ textarea.field { min-height: 115px; resize: vertical; }
 .mini-row { margin-top: 10px; display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; }
 .mini-list { display: grid; gap: 8px; margin-top: 14px; }
 .mini-item {
-  display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 12px; background: #fff; 
+  display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 12px; background: #fff;
 }
 .mini-item span { font-size: 22px; }
 .mini-item small { font-size: 10px; }
