@@ -1,51 +1,42 @@
 # LIFE, BY DESIGN
 
-A cozy, responsive lifestyle-planning and room-decorating game prototype.
-
-**Your life. Your choices. Your world.**
+A cozy responsive lifestyle-planning and room-decorating game prototype.
 
 ## Run it
 
-Open `index.html` in a modern browser. No build step or package installation is required. You can also serve the repository with any static file server.
+Open `index.html` in a modern browser. No build step or package installation is required. The app saves demo progress in browser `localStorage`.
 
-## Included in this prototype
+## Playable features
 
-- Home dashboard with daily activities and upcoming plans
-- My Life planner with custom plans, goals, and a private-by-default journal
-- Changeable life categories—no prescribed milestones or single path
-- LIFE COINS earned from participation, with a configurable-in-code daily cap
-- Cozy illustrated room and virtual decor shop
-- Sample reward ideas and a visible warning that demo redemptions are not real vouchers
-- Responsive layout for desktop and mobile
-- Browser-local persistence using `localStorage`
+- Home dashboard, daily activities, plans, custom goals, and private-by-default journal
+- Changeable lifestyle categories without a prescribed life path
+- LIFE COINS, daily earning cap, XP, levels, badges, and a gentle activity streak
+- Cozy illustrated virtual rooms: living room, bedroom, and kitchen
+- Drag furniture to arrange it; placements snap to the room grid and persist
+- Tap empty floor or use arrow keys/WASD to move the animated avatar
+- Decor inventory and coin shop
+- Example reward vouchers clearly marked as simulated
+- Responsive mobile-friendly navigation and touch interactions
 
-## Important prototype limitations
+## Room controls
 
-This is a front-end demo, not a production service. Data lives only in the current browser and is not synced or backed up. There is no authentication, server-side coin validation, real voucher, payment system, brand dashboard, admin dashboard, or secure account deletion. Do not enter sensitive personal or financial information. Coin validation, transaction integrity, privacy controls, and reward fulfillment must be implemented server-side before launch.
+- Open **My World** and choose a room tab.
+- Drag an item in the room to reposition it. Furniture snaps to a soft grid.
+- Tap an empty floor tile to move the avatar there.
+- Use **arrow keys** or **W/A/S/D** while in My World for keyboard movement.
+- Tap a piece in Room inventory to place it; **Reset layout** clears that room’s placements without removing owned furniture.
 
-## Project structure
+## Prototype limitations
+
+This is a front-end demo. Data is stored locally in the current browser and is not synced or backed up. There is no authentication, server-validated coin ledger, real reward fulfillment, payment processing, or secure account deletion. Do not enter sensitive personal or financial information. Production coin validation, privacy controls, and rewards need server-side implementation and legal review.
+
+## Files
 
 ```text
 .
-├── index.html   # App shell and navigation
-├── styles.css   # Responsive cozy-game visual design
-├── app.js       # Views, browser-local state, planning and game interactions
-└── README.md    # Setup and prototype notes
+├── index.html
+├── styles.css
+├── editor.css
+├── app.js
+└── README.md
 ```
-
-## Suggested next steps
-
-1. Test the prototype with target users and learn which planning and room features feel valuable.
-2. Replace emoji placeholders with original illustrated assets.
-3. Move accounts, private data, goals, and the coin ledger to a secure backend with server-side authorization and validation.
-4. Add consent-aware, aggregated campaign analytics and real voucher fulfillment only after partner and legal review.
-5. Validate Indonesian pricing and regulations before introducing subscriptions or real-money transactions.
-
----
-
-## Added: web demo and mobile game prototype
-
-- `demo/index.html` - single-page planner demo (Home, My Life, My World, Rewards, Profile). Open in a browser. Data is saved in local storage only.
-- `prototype/` - six-screen clickable mobile game prototype (Main, Home, Quests, Decorate, Bazaar, Shop). These are Claude Design artboards (`.dc.html` + `canvas.json`) and need the Design artifact runtime to render.
-
-Notes on the prototype: all content, brands and rewards are sample data; coins cannot be cashed out or bought; visuals are placeholder code-drawn art, so final illustrated assets (character, rooms, furniture, icons) are still needed; each screen keeps its own state, so coins are not shared between screens.
