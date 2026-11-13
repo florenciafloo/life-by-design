@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quest path</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.fd{font-family:'Fredoka','Nunito',sans-serif}
+.chip{border:3px solid #7A5545;border-radius:16px;box-shadow:0 3px 0 #D9B8A0;cursor:pointer;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;color:#6A4A3C;background:#FFFBF4}
+.chip:active{transform:translateY(2px);box-shadow:0 1px 0 #D9B8A0}
+.chip:disabled{cursor:default}
+.wood{border:3px solid #7A5545;border-radius:16px;background:#F59A93;box-shadow:0 3px 0 #C9726C;color:#FFFBF4;text-shadow:0 1px 0 #B85C57;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;cursor:pointer}
+.wood:active{transform:translateY(2px);box-shadow:0 1px 0 #C9726C}
+.wood:disabled{background:#D9C9BC;border-color:#A8907F;box-shadow:0 3px 0 #A8907F;text-shadow:none;cursor:default}
+.pill{display:flex;align-items:center;gap:6px;height:36px;padding:0 6px;box-sizing:border-box;border-radius:18px;background:#FFFBF4;border:3px solid #7A5545;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:16px;color:#6A4A3C}
+.plus{width:22px;height:22px;box-sizing:border-box;border-radius:11px;background:#8CCB6B;border:2px solid #7A5545;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;line-height:1}
+.nav{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;height:92px;box-sizing:border-box;padding:10px 8px 14px;background:#FBF1DE;border-top:3px solid #7A5545;z-index:5}
+.tile{position:relative;width:62px;height:64px;box-sizing:border-box;border:3px solid #7A5545;border-radius:16px;background:#FFFBF4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:'Fredoka','Nunito',sans-serif;font-size:11.5px;font-weight:600;color:#6A4A3C}
+.tile.on{background:#CFE3B4}
+.tile:active{transform:translateY(2px)}
+.rdot{position:absolute;top:-9px;right:-7px;width:18px;height:18px;box-sizing:border-box;border-radius:50%;background:#F04E4E;border:3px solid #FFFBF4}
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.fd{font-family:'Fredoka','Nunito',sans-serif}
+.node{position:absolute;width:56px;height:56px;box-sizing:border-box;border-radius:50%;border:3px solid #7A5545;box-shadow:0 4px 0 #7A5545;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;z-index:2}
+.node:active{transform:translateY(2px)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes ping{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@keyframes pop{0%{transform:translateY(-24px);opacity:0}12%{transform:translateY(0);opacity:1}85%{opacity:1}100%{opacity:0}}
+@keyframes up{0%{transform:translateY(60px);opacity:0}100%{transform:translateY(0);opacity:1}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background-color:#FAE2C6;background-image:linear-gradient(#EBCB9F 2px,transparent 2px),linear-gradient(90deg,#EBCB9F 2px,transparent 2px);background-size:90px 90px; font-family: 'Nunito', system-ui, sans-serif; color: #6A4A3C; overflow: hidden"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="ink" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="sticker" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="w"/><feMorphology in="w" operator="dilate" radius="2.6" result="d"/><feFlood flood-color="#FFFBF4"/><feComposite in2="d" operator="in" result="halo"/><feMerge><feMergeNode in="halo"/><feMergeNode in="w"/></feMerge></filter></defs></svg>
+<svg viewBox="0 0 390 580" width="390" height="580" aria-hidden="true" style="filter:url(#ink); position: absolute; left: 0; top: 150px">
+<g fill="#F3D6B0"><ellipse cx="50" cy="120" rx="22" ry="8"/><ellipse cx="340" cy="230" rx="24" ry="8"/><ellipse cx="60" cy="330" rx="22" ry="8"/><ellipse cx="330" cy="470" rx="22" ry="8"/></g>
+<g fill="#FFFFFF"><circle cx="30" cy="200" r="3"/><circle cx="360" cy="90" r="3"/><circle cx="200" cy="270" r="3"/><circle cx="30" cy="450" r="3"/><circle cx="360" cy="380" r="3"/></g>
+<path d="M110 50C230 50 280 70 280 140C280 210 110 160 110 230C110 300 280 250 280 320C280 390 110 340 110 410C110 470 196 440 196 500" fill="none" stroke="#7A5545" stroke-width="36" stroke-linecap="round"/>
+<path d="M110 50C230 50 280 70 280 140C280 210 110 160 110 230C110 300 280 250 280 320C280 390 110 340 110 410C110 470 196 440 196 500" fill="none" stroke="#F9CFC9" stroke-width="28" stroke-linecap="round"/>
+<path d="M110 50C230 50 280 70 280 140C280 210 110 160 110 230C110 300 280 250 280 320C280 390 110 340 110 410C110 470 196 440 196 500" fill="none" stroke="#FFF6E3" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+<g stroke="#7A5545" stroke-width="2.6" stroke-linejoin="round"><path d="M338 100L341 84H363 L366 100Z" fill="#FFF6EC"/><path d="M352 84C336 78 340 62 346 56C354 64 368 72 352 84Z" fill="#B7D3A0"/></g><g stroke="#7A5545" stroke-width="2.6" stroke-linejoin="round"><path d="M20 280L23 264H45 L48 280Z" fill="#FFF6EC"/><path d="M34 264C18 258 22 242 28 236C36 244 50 252 34 264Z" fill="#B7D3A0"/></g><g stroke="#7A5545" stroke-width="2.6" stroke-linejoin="round"><path d="M342 410L345 394H367 L370 410Z" fill="#FFF6EC"/><path d="M356 394C340 388 344 372 350 366C358 374 372 382 356 394Z" fill="#B7D3A0"/></g>
+
+</svg>
+<div style="position: absolute; left: 14px; top: 46px; z-index: 6">
+<div class="pill">
+<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#F2C34E" stroke="#7A5545" stroke-width="2"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="#7A5545" stroke-width="1.6"/></svg>
+<span style="min-width: 38px; text-align: center">{{coins}}</span>
+</div>
+</div>
+<div style="position: absolute; left: 14px; right: 14px; top: 94px; z-index: 6; display: flex; gap: 8px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="2">
+<button type="button" class="chip" onClick="{{t.pick}}" aria-pressed="{{t.on}}" style="flex: 1; height: 42px; font-size: 16px; border-radius: 16px; background: {{t.bg}}">{{t.label}}</button>
+</sc-for>
+</div>
+<sc-for list="{{nodes}}" as="n" hint-placeholder-count="6">
+<div style="display: contents">
+<button type="button" class="node" onClick="{{n.tap}}" aria-label="{{n.name}}" style="left: {{n.left}}; top: {{n.top}}; background: {{n.bg}}; {{n.anim}}">
+<sc-if value="{{n.isDone}}" hint-placeholder-val="{{false}}">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6A4A3C" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+</sc-if>
+<sc-if value="{{n.isCur}}" hint-placeholder-val="{{false}}">
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.3l1.1-6.2L3 9.7l6.2-.9z" fill="#F6DF8E" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/></svg>
+</sc-if>
+<sc-if value="{{n.isLock}}" hint-placeholder-val="{{false}}">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9A8670" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="3"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+</sc-if>
+</button>
+<div class="fd" style="position: absolute; left: {{n.lblLeft}}; top: {{n.lblTop}}; width: 150px; text-align: center; z-index: 2; pointer-events: none"><span style="display: inline-block; padding: 3px 10px; border-radius: 12px; border: 2px solid #7A5545; background: #FFF6E3; font-size: 12.5px; font-weight: 600; line-height: 1.2">{{n.name}}</span></div>
+<sc-if value="{{n.isCur}}" hint-placeholder-val="{{false}}">
+<svg viewBox="0 0 60 84" width="34" height="48" aria-hidden="true" style="filter:url(#sticker); position: absolute; left: {{n.avLeft}}; top: {{n.avTop}}; z-index: 3; pointer-events: none; animation: bob 1.5s ease-in-out infinite"><g style="animation: bob 1.8s ease-in-out infinite"><ellipse cx="30" cy="80" rx="16" ry="3.4" fill="rgba(122,85,69,0.18)"/><path d="M5 30C3 10 16 4 30 4C44 4 57 10 55 30C57 44 56 52 50 56L10 56C4 52 3 44 5 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><rect x="23" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><rect x="31.5" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="25.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><ellipse cx="34.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><rect x="18" y="52" width="24" height="17" rx="7" fill="#F6D77A" stroke="#7A5545" stroke-width="2.2"/><path d="M24 52L30 59L36 52Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.6" stroke-linejoin="round"/><circle cx="15" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><circle cx="45" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="30" cy="31" rx="24" ry="22" fill="#FDE9DC" stroke="#7A5545" stroke-width="2.4"/><path d="M6 30C6 12 18 6 30 6C42 6 54 12 54 30C48 22 42 18 36 18C32 24 18 22 6 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 10Q22 14 24 18M37 10Q39 14 37 17" fill="none" stroke="#7FB5C9" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="21" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><ellipse cx="39" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><circle cx="21.8" cy="34.6" r="0.9" fill="#FFFFFF"/><circle cx="39.8" cy="34.6" r="0.9" fill="#FFFFFF"/><ellipse cx="13.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><ellipse cx="46.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><path d="M28 41.5Q30 43.5 32 41.5" fill="none" stroke="#7A5545" stroke-width="1.4" stroke-linecap="round"/><path d="M8 15C16 6 44 6 52 15" fill="none" stroke="#7FB070" stroke-width="3" stroke-linecap="round"/><g stroke="#7A5545" stroke-width="1.8"><circle cx="15" cy="11" r="5" fill="#F6B24A"/><circle cx="30" cy="7.5" r="5.5" fill="#F6B24A"/><circle cx="45" cy="11" r="5" fill="#F6B24A"/></g><g fill="#FFF3C4"><circle cx="15" cy="11" r="1.8"/><circle cx="30" cy="7.5" r="2"/><circle cx="45" cy="11" r="1.8"/></g></g></svg>
+</sc-if>
+</div>
+</sc-for>
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 20px; right: 20px; top: 150px; z-index: 8; display: flex; justify-content: center; pointer-events: none; animation: pop 1.8s ease-out forwards">
+<span class="fd" style="padding: 8px 14px; border-radius: 16px; border: 3px solid #7A5545; background: #F9C4BF; box-shadow: 0 4px 0 #D9B8A0; font-size: 15px; font-weight: 600">{{toast}}</span>
+</div>
+</sc-if>
+<nav class="nav"><a href="Home.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12L12 4L20 12V20H4Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="6" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.8"/></svg>World</a><a href="Quests.dc.html" class="tile on"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4" stroke="#7A5545" stroke-width="2.4" stroke-linecap="round"/><path d="M6 5H18L15.5 9L18 13H6Z" fill="#F6CF7A" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/></svg>Quests</a><a href="Decorate.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="11" rx="4" fill="#F7B3AD" stroke="#7A5545" stroke-width="2"/><rect x="3" y="12" width="18" height="7" rx="3" fill="#F7B3AD" stroke="#7A5545" stroke-width="2"/><path d="M6 19V21M18 19V21" stroke="#7A5545" stroke-width="2" stroke-linecap="round"/></svg>Decorate</a><a href="Bazaar.dc.html" class="tile"><span class="rdot"></span><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10L5 4H19L21 10Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M4 10V20H20V10" fill="#FFF1D6" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><rect x="9" y="13" width="6" height="7" fill="#CFE3B4" stroke="#7A5545" stroke-width="1.8"/></svg>Bazaar</a><a href="Shop.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8H19L18 20H6Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M9 8A3 3 0 0115 8" fill="none" stroke="#7A5545" stroke-width="2" stroke-linecap="round"/></svg>Shop</a></nav>
+<sc-if value="{{hasSheet}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; z-index: 20; background: rgba(74,51,38,0.45); display: flex; align-items: flex-end">
+<div style="width: 100%; box-sizing: border-box; padding: 18px 18px 30px; border-radius: 28px 28px 0 0; background: #FFF6E3; border: 3px solid #7A5545; border-bottom: 0; display: flex; flex-direction: column; gap: 10px; animation: up 0.25s ease-out">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px">
+<div>
+<div class="fd" style="font-size: 12.5px; font-weight: 600; color: #8A6B5A">{{sheet.era}}</div>
+<div class="fd" style="font-size: 22px; font-weight: 600; line-height: 1.15">{{sheet.name}}</div>
+</div>
+<button type="button" class="chip" onClick="{{closeSheet}}" aria-label="Close" style="width: 38px; height: 38px; border-radius: 19px; font-size: 18px; flex-shrink: 0">x</button>
+</div>
+<div style="font-size: 14.5px; font-weight: 700; line-height: 1.4; color: #8A6B5A">{{sheet.text}}</div>
+<div style="padding: 10px 12px; border-radius: 16px; background: #E4EFD6; border: 2px solid #7A5545; font-size: 13.5px; font-weight: 700; line-height: 1.35">Your home grows: {{sheet.grow}}</div>
+<button type="button" class="wood" onClick="{{complete}}" style="height: 50px; font-size: 18px">Complete quest +{{sheet.coins}}</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{hasCut}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; z-index: 30; background: linear-gradient(#F9D2CB, #F3B8B0); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 30px; box-sizing: border-box; text-align: center">
+<svg width="390" height="844" viewBox="0 0 390 844" aria-hidden="true" style="filter:url(#ink); position: absolute; left: 0; top: 0"><g><circle cx="50" cy="120" r="6" fill="#F6DF8E"/><circle cx="330" cy="90" r="5" fill="#FFFFFF"/><circle cx="90" cy="250" r="5" fill="#B7D3A0"/><circle cx="310" cy="280" r="7" fill="#F6DF8E"/><circle cx="40" cy="520" r="5" fill="#FFFFFF"/><circle cx="350" cy="560" r="6" fill="#B7D3A0"/><circle cx="120" cy="680" r="5" fill="#F6DF8E"/><circle cx="280" cy="700" r="5" fill="#FFFFFF"/></g></svg>
+<div style="position: relative; width: 190px; height: 270px">
+<svg viewBox="0 0 60 84" width="190" height="266" aria-hidden="true" style="filter:url(#sticker); animation: bob 1.8s ease-in-out infinite"><g style="animation: bob 1.8s ease-in-out infinite"><ellipse cx="30" cy="80" rx="16" ry="3.4" fill="rgba(122,85,69,0.18)"/><path d="M5 30C3 10 16 4 30 4C44 4 57 10 55 30C57 44 56 52 50 56L10 56C4 52 3 44 5 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><rect x="23" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><rect x="31.5" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="25.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><ellipse cx="34.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><rect x="18" y="52" width="24" height="17" rx="7" fill="#F6D77A" stroke="#7A5545" stroke-width="2.2"/><path d="M24 52L30 59L36 52Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.6" stroke-linejoin="round"/><circle cx="15" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><circle cx="45" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="30" cy="31" rx="24" ry="22" fill="#FDE9DC" stroke="#7A5545" stroke-width="2.4"/><path d="M6 30C6 12 18 6 30 6C42 6 54 12 54 30C48 22 42 18 36 18C32 24 18 22 6 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 10Q22 14 24 18M37 10Q39 14 37 17" fill="none" stroke="#7FB5C9" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="21" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><ellipse cx="39" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><circle cx="21.8" cy="34.6" r="0.9" fill="#FFFFFF"/><circle cx="39.8" cy="34.6" r="0.9" fill="#FFFFFF"/><ellipse cx="13.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><ellipse cx="46.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><path d="M28 41.5Q30 43.5 32 41.5" fill="none" stroke="#7A5545" stroke-width="1.4" stroke-linecap="round"/><path d="M8 15C16 6 44 6 52 15" fill="none" stroke="#7FB070" stroke-width="3" stroke-linecap="round"/><g stroke="#7A5545" stroke-width="1.8"><circle cx="15" cy="11" r="5" fill="#F6B24A"/><circle cx="30" cy="7.5" r="5.5" fill="#F6B24A"/><circle cx="45" cy="11" r="5" fill="#F6B24A"/></g><g fill="#FFF3C4"><circle cx="15" cy="11" r="1.8"/><circle cx="30" cy="7.5" r="2"/><circle cx="45" cy="11" r="1.8"/></g></g></svg>
+<svg viewBox="0 0 40 40" width="64" height="64" aria-hidden="true" style="position: absolute; right: -8px; top: 60px; transform: rotate(18deg)"><circle cx="12" cy="14" r="9" fill="#F6DF8E" stroke="#7A5545" stroke-width="3"/><circle cx="12" cy="14" r="3.2" fill="#F3B8B0" stroke="#7A5545" stroke-width="2"/><path d="M19 20L36 36M30 31L35 26M26 27L31 22" fill="none" stroke="#7A5545" stroke-width="3.4" stroke-linecap="round"/><path d="M19 20L36 36" fill="none" stroke="#F6DF8E" stroke-width="1.6" stroke-linecap="round"/></svg>
+</div>
+<div class="fd" style="font-size: 30px; font-weight: 700; line-height: 1.1; color: #6A4A3C">{{cut.title}}</div>
+<div style="font-size: 15px; font-weight: 800; line-height: 1.4; color: #8A6B5A; max-width: 260px">{{cut.sub}}</div>
+<button type="button" class="chip" onClick="{{toggleSave}}" aria-pressed="{{saved}}" style="height: 44px; padding: 0 18px; font-size: 15px; background: {{saveBg}}">{{saveLabel}}</button>
+<button type="button" class="wood" onClick="{{closeCut}}" style="height: 52px; padding: 0 34px; font-size: 18px">Continue</button>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { tab: 'solo', steps: { solo: 2, wedding: 2 }, sheet: null, coins: 245, toast: null, cut: false, saved: false };
+}
+data() {
+return {
+solo: {
+era: 'Solo Era',
+cutTitle: 'You got the keys.',
+cutSub: 'Your first place is officially yours.',
+nodes: [
+{ n: 'Budget basics', t: 'Set a simple monthly budget you can actually follow.', g: 'a cozy desk appears in your room.' },
+{ n: 'Emergency pot', t: 'Open a small pot for surprises. Start tiny.', g: 'a little piggy shelf joins the wall.' },
+{ n: 'Cook at home', t: 'Cook at home three times this week.', g: 'a kettle and mugs on the counter.' },
+{ n: 'Visit the Bazaar', t: 'Stop by one booth at the Life Bazaar.', g: 'a Bazaar lantern for the porch.' },
+{ n: '3 months saved', t: 'Hit three months of rent in your pot.', g: 'a second window with a view.' },
+{ n: 'Get the keys', t: 'Sign for your own place. Big moment.', g: 'the whole home levels up.' }
+]
+},
+wedding: {
+era: 'Engagement Era',
+cutTitle: 'The big day is here.',
+cutSub: 'Everything you planned, one step at a time.',
+nodes: [
+{ n: 'Pick the season', t: 'Choose a date range you both like.', g: 'a calendar appears on the wall.' },
+{ n: 'Guest draft', t: 'Draft a first guest list. No pressure.', g: 'a cozy table for two.' },
+{ n: 'Wedding fund', t: 'Open a dedicated wedding fund.', g: 'a flower arch in the garden.' },
+{ n: 'Wedding Bazaar', t: 'Collect a stamp at the Wedding Bazaar.', g: 'string lights over the porch.' },
+{ n: 'Shortlist vendors', t: 'Shortlist three vendors you like.', g: 'a moodboard above the sofa.' },
+{ n: 'Book the venue', t: 'Lock in the venue and date.', g: 'the whole home levels up.' }
+]
+}
+};
+}
+complete() {
+const s = this.state;
+const i = s.sheet;
+if (i === null) return;
+const steps = Object.assign({}, s.steps);
+if (steps[s.tab] !== i) return;
+steps[s.tab] = i + 1;
+const last = i === 5;
+const gain = last ? 50 : 15;
+this.setState({ steps: steps, sheet: null, coins: s.coins + gain, toast: '+' + gain + ' coins', cut: last });
+setTimeout(() => this.setState({ toast: null }), 1800);
+}
+renderVals() {
+const s = this.state;
+const D = this.data();
+const cur = D[s.tab];
+const step = s.steps[s.tab];
+const pts = [[110, 50], [280, 140], [110, 230], [280, 320], [110, 410], [196, 500]];
+const nodes = cur.nodes.map((nd, i) => {
+const x = pts[i][0];
+const y = pts[i][1] + 150;
+const isDone = i < step;
+const isCur = i === step;
+const isLock = i > step;
+const key = i === 5;
+let bg = '#EADFC4';
+if (isDone) bg = '#CFE3B4';
+if (isCur) bg = '#F7B8B0';
+if (key && !isDone) bg = isCur ? '#F9C4BF' : '#F0E3B8';
+return {
+name: nd.n,
+left: (x - 28) + 'px',
+top: (y - 28) + 'px',
+lblLeft: (x - 75) + 'px',
+lblTop: (y + 32) + 'px',
+avLeft: (x - 17) + 'px',
+avTop: (y - 76) + 'px',
+bg: bg,
+anim: isCur ? 'animation: ping 1.3s ease-in-out infinite' : '',
+isDone: isDone,
+isCur: isCur,
+isLock: isLock,
+tap: () => { if (isCur) this.setState({ sheet: i }); }
+};
+});
+const tabs = [['solo', 'Solo Era'], ['wedding', 'Engagement Era']].map((t) => ({
+label: t[1],
+on: s.tab === t[0],
+bg: s.tab === t[0] ? '#F9C4BF' : '#FFF6E3',
+pick: () => this.setState({ tab: t[0] })
+}));
+const sn = s.sheet !== null ? cur.nodes[s.sheet] : null;
+return {
+coins: s.coins,
+tabs: tabs,
+nodes: nodes,
+hasSheet: s.sheet !== null,
+sheet: sn ? { era: cur.era, name: sn.n, text: sn.t, grow: sn.g, coins: s.sheet === 5 ? 50 : 15 } : { era: '', name: '', text: '', grow: '', coins: 0 },
+closeSheet: () => this.setState({ sheet: null }),
+complete: () => this.complete(),
+hasToast: !!s.toast,
+toast: s.toast || '',
+hasCut: s.cut,
+cut: { title: cur.cutTitle, sub: cur.cutSub },
+saved: s.saved,
+saveBg: s.saved ? '#B7D3A0' : '#FFF6E3',
+saveLabel: s.saved ? 'Saved to your memories' : 'Save this moment',
+toggleSave: () => this.setState({ saved: !this.state.saved }),
+closeCut: () => this.setState({ cut: false })
+};
+}
+}
+</script>
+</body>
+</html>

@@ -40,3 +40,12 @@ This is a front-end demo, not a production service. Data lives only in the curre
 3. Move accounts, private data, goals, and the coin ledger to a secure backend with server-side authorization and validation.
 4. Add consent-aware, aggregated campaign analytics and real voucher fulfillment only after partner and legal review.
 5. Validate Indonesian pricing and regulations before introducing subscriptions or real-money transactions.
+
+---
+
+## Added: web demo and mobile game prototype
+
+- `demo/index.html` - single-page planner demo (Home, My Life, My World, Rewards, Profile). Open in a browser. Data is saved in local storage only.
+- `prototype/` - six-screen clickable mobile game prototype (Main, Home, Quests, Decorate, Bazaar, Shop). These are Claude Design artboards (`.dc.html` + `canvas.json`) and need the Design artifact runtime to render.
+
+Notes on the prototype: all content, brands and rewards are sample data; coins cannot be cashed out or bought; visuals are placeholder code-drawn art, so final illustrated assets (character, rooms, furniture, icons) are still needed; each screen keeps its own state, so coins are not shared between screens.

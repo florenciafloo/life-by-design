@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Decorate</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.fd{font-family:'Fredoka','Nunito',sans-serif}
+.chip{border:3px solid #7A5545;border-radius:16px;box-shadow:0 3px 0 #D9B8A0;cursor:pointer;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;color:#6A4A3C;background:#FFFBF4}
+.chip:active{transform:translateY(2px);box-shadow:0 1px 0 #D9B8A0}
+.chip:disabled{cursor:default}
+.wood{border:3px solid #7A5545;border-radius:16px;background:#F59A93;box-shadow:0 3px 0 #C9726C;color:#FFFBF4;text-shadow:0 1px 0 #B85C57;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;cursor:pointer}
+.wood:active{transform:translateY(2px);box-shadow:0 1px 0 #C9726C}
+.wood:disabled{background:#D9C9BC;border-color:#A8907F;box-shadow:0 3px 0 #A8907F;text-shadow:none;cursor:default}
+.pill{display:flex;align-items:center;gap:6px;height:36px;padding:0 6px;box-sizing:border-box;border-radius:18px;background:#FFFBF4;border:3px solid #7A5545;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:16px;color:#6A4A3C}
+.plus{width:22px;height:22px;box-sizing:border-box;border-radius:11px;background:#8CCB6B;border:2px solid #7A5545;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;line-height:1}
+.nav{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;height:92px;box-sizing:border-box;padding:10px 8px 14px;background:#FBF1DE;border-top:3px solid #7A5545;z-index:5}
+.tile{position:relative;width:62px;height:64px;box-sizing:border-box;border:3px solid #7A5545;border-radius:16px;background:#FFFBF4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:'Fredoka','Nunito',sans-serif;font-size:11.5px;font-weight:600;color:#6A4A3C}
+.tile.on{background:#CFE3B4}
+.tile:active{transform:translateY(2px)}
+.rdot{position:absolute;top:-9px;right:-7px;width:18px;height:18px;box-sizing:border-box;border-radius:50%;background:#F04E4E;border:2.5px solid #FFFBF4}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes pop{0%{transform:translateY(-24px);opacity:0}12%{transform:translateY(0);opacity:1}85%{opacity:1}100%{opacity:0}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FBF3E6; font-family: 'Nunito', system-ui, sans-serif; color: #6A4A3C; overflow: hidden"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="ink" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="sticker" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="w"/><feMorphology in="w" operator="dilate" radius="2.6" result="d"/><feFlood flood-color="#FFFBF4"/><feComposite in2="d" operator="in" result="halo"/><feMerge><feMergeNode in="halo"/><feMergeNode in="w"/></feMerge></filter></defs></svg>
+<svg viewBox="0 0 390 340" width="390" height="340" role="img" aria-label="Your room, ready to decorate" style="filter:url(#ink); position: absolute; left: 0; top: 0">
+<defs><pattern id="tl2" width="120" height="120" patternUnits="userSpaceOnUse"><rect width="120" height="120" fill="#F8D8BC"/><path d="M0 0H120M0 60H120M60 0V60M0 60V120" stroke="#EBC09C" stroke-width="2"/></pattern></defs>
+<rect width="390" height="340" fill="#F6D2B0"/>
+<rect x="116" y="34" width="158" height="132" rx="6" fill="#FBE3C2" stroke="#E7B88F" stroke-width="5"/>
+<path d="M195 34V166M116 100H274" stroke="#E7B88F" stroke-width="5"/>
+<path d="M0 26C34 36 50 96 36 180H0Z" fill="#FBE7A8" stroke="#EFD07A" stroke-width="3"/>
+<path d="M390 26C356 36 340 96 354 180H390Z" fill="#FBE7A8" stroke="#EFD07A" stroke-width="3"/>
+<rect y="180" width="390" height="160" fill="url(#tl2)"/>
+<path d="M0 180H390" stroke="#E7B88F" stroke-width="4"/>
+<g style="opacity: {{o.art}}; transition: opacity 0.3s">
+<rect x="296" y="56" width="62" height="54" rx="6" fill="#FFF6E3" stroke="#7A5545" stroke-width="3"/>
+<rect x="303" y="63" width="48" height="40" rx="3" fill="#CBE7EC"/>
+<path d="M303 94L318 80L328 88L338 76L351 94V103H303Z" fill="#B7D3A0"/>
+<circle cx="338" cy="72" r="5" fill="#F6DF8E" stroke="#7A5545" stroke-width="1.6"/>
+</g>
+<g style="opacity: {{o.rug}}; transition: opacity 0.3s">
+<ellipse cx="195" cy="294" rx="108" ry="30" fill="#B7D3A0" stroke="#7A5545" stroke-width="3"/>
+<ellipse cx="195" cy="294" rx="86" ry="20" fill="none" stroke="#FFF6E3" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+</g>
+<ellipse cx="100" cy="272" rx="84" ry="8" fill="rgba(122,85,69,0.14)"/>
+<g stroke="#7A5545" stroke-width="3" stroke-linejoin="round">
+<rect x="30" y="196" width="136" height="56" rx="20" fill="#F7B8B2"/>
+<rect x="22" y="226" width="152" height="42" rx="16" fill="#F7B8B2"/>
+<rect x="22" y="206" width="22" height="62" rx="10" fill="#F4A6A0"/>
+<rect x="152" y="206" width="22" height="62" rx="10" fill="#F4A6A0"/>
+<rect x="52" y="214" width="38" height="26" rx="10" fill="#FFF6EC"/>
+</g>
+<g style="opacity: {{o.lamp}}; transition: opacity 0.3s">
+<ellipse cx="206" cy="266" rx="18" ry="5" fill="rgba(122,85,69,0.14)"/>
+<rect x="203" y="190" width="6" height="74" fill="#B98254" stroke="#7A5545" stroke-width="2.4"/>
+<path d="M186 196L194 164H218L226 196Z" fill="#F6DF8E" stroke="#7A5545" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="206" cy="264" rx="14" ry="4.5" fill="#B98254" stroke="#7A5545" stroke-width="2.4"/>
+</g>
+<g style="opacity: {{o.chair}}; transition: opacity 0.3s">
+<ellipse cx="292" cy="270" rx="46" ry="7" fill="rgba(122,85,69,0.14)"/>
+<g stroke="#7A5545" stroke-width="3" stroke-linejoin="round"><rect x="262" y="200" width="62" height="52" rx="22" fill="#F7B8B2"/><rect x="254" y="236" width="78" height="32" rx="14" fill="#F7B8B2"/><ellipse cx="293" cy="240" rx="20" ry="9" fill="#FFF6EC"/></g>
+</g>
+<g style="opacity: {{o.plant}}; transition: opacity 0.3s">
+<ellipse cx="352" cy="288" rx="24" ry="6" fill="rgba(122,85,69,0.14)"/>
+<path d="M338 286L341 260H365L368 286Z" fill="#E59A78" stroke="#7A5545" stroke-width="2.6" stroke-linejoin="round"/>
+<g stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"><path d="M353 260C340 252 338 234 345 222C357 233 360 250 353 260Z" fill="#B7D3A0"/><path d="M353 260C364 248 374 244 380 228C366 228 354 238 353 260Z" fill="#7FB070"/><path d="M353 260C350 242 355 230 363 218C369 235 364 251 353 260Z" fill="#CFE3BC"/></g>
+</g>
+<svg x="{{meX}}" y="262" width="48" height="67" viewBox="0 0 60 84" style="filter:url(#sticker)"><g style="animation: bob 1.6s ease-in-out infinite"><ellipse cx="30" cy="80" rx="16" ry="3.4" fill="rgba(122,85,69,0.18)"/><path d="M5 30C3 10 16 4 30 4C44 4 57 10 55 30C57 44 56 52 50 56L10 56C4 52 3 44 5 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><rect x="23" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><rect x="31.5" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="25.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><ellipse cx="34.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><rect x="18" y="52" width="24" height="17" rx="7" fill="#F6D77A" stroke="#7A5545" stroke-width="2.2"/><path d="M24 52L30 59L36 52Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.6" stroke-linejoin="round"/><circle cx="15" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><circle cx="45" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="30" cy="31" rx="24" ry="22" fill="#FDE9DC" stroke="#7A5545" stroke-width="2.4"/><path d="M6 30C6 12 18 6 30 6C42 6 54 12 54 30C48 22 42 18 36 18C32 24 18 22 6 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 10Q22 14 24 18M37 10Q39 14 37 17" fill="none" stroke="#7FB5C9" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="21" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><ellipse cx="39" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><circle cx="21.8" cy="34.6" r="0.9" fill="#FFFFFF"/><circle cx="39.8" cy="34.6" r="0.9" fill="#FFFFFF"/><ellipse cx="13.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><ellipse cx="46.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><path d="M28 41.5Q30 43.5 32 41.5" fill="none" stroke="#7A5545" stroke-width="1.4" stroke-linecap="round"/><path d="M8 15C16 6 44 6 52 15" fill="none" stroke="#7FB070" stroke-width="3" stroke-linecap="round"/><g stroke="#7A5545" stroke-width="1.8"><circle cx="15" cy="11" r="5" fill="#F6B24A"/><circle cx="30" cy="7.5" r="5.5" fill="#F6B24A"/><circle cx="45" cy="11" r="5" fill="#F6B24A"/></g><g fill="#FFF3C4"><circle cx="15" cy="11" r="1.8"/><circle cx="30" cy="7.5" r="2"/><circle cx="45" cy="11" r="1.8"/></g></g></svg>
+<svg x="196" y="262" width="48" height="67" viewBox="0 0 60 84" style="filter:url(#sticker); opacity: {{partnerO}}; transition: opacity 0.3s"><g style="animation: bob 1.9s ease-in-out infinite"><ellipse cx="30" cy="80" rx="16" ry="3.4" fill="rgba(122,85,69,0.18)"/><path d="M5 30C3 10 16 4 30 4C44 4 57 10 55 30C57 44 56 52 50 56L10 56C4 52 3 44 5 30Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><rect x="23" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><rect x="31.5" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="25.5" cy="76" rx="6" ry="3.4" fill="#F6D77A" stroke="#7A5545" stroke-width="2"/><ellipse cx="34.5" cy="76" rx="6" ry="3.4" fill="#F6D77A" stroke="#7A5545" stroke-width="2"/><rect x="18" y="52" width="24" height="17" rx="7" fill="#F9E7A8" stroke="#7A5545" stroke-width="2.2"/><path d="M24 52L30 59L36 52Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.6" stroke-linejoin="round"/><circle cx="15" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><circle cx="45" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="30" cy="31" rx="24" ry="22" fill="#FDE9DC" stroke="#7A5545" stroke-width="2.4"/><path d="M6 30C6 12 18 6 30 6C42 6 54 12 54 30C48 22 42 18 36 18C32 24 18 22 6 30Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 10Q22 14 24 18M37 10Q39 14 37 17" fill="none" stroke="#D6CFC6" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="21" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><ellipse cx="39" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><circle cx="21.8" cy="34.6" r="0.9" fill="#FFFFFF"/><circle cx="39.8" cy="34.6" r="0.9" fill="#FFFFFF"/><ellipse cx="13.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><ellipse cx="46.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><path d="M28 41.5Q30 43.5 32 41.5" fill="none" stroke="#7A5545" stroke-width="1.4" stroke-linecap="round"/><g stroke="#7A5545" stroke-width="1.6" fill="#F6D13A" stroke-linejoin="round"><path d="M12 14L6 8L5 18Z"/><path d="M12 14L19 10L18 19Z"/><circle cx="12" cy="14" r="2.2"/></g></g></svg>
+</svg>
+<div style="position: absolute; left: 12px; right: 12px; top: 44px; z-index: 6; display: flex; align-items: center; justify-content: space-between">
+<a href="Home.dc.html" aria-label="Back to your home" class="chip" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 22px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6A4A3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+</a>
+<div class="pill">
+<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#F2C34E" stroke="#7A5545" stroke-width="2"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="#7A5545" stroke-width="1.6"/></svg>
+<span style="min-width: 34px; text-align: center">{{coins}}</span>
+<a href="Quests.dc.html" class="plus" aria-label="Earn more coins with quests">+</a>
+</div>
+</div>
+<button type="button" class="chip" onClick="{{togglePartner}}" aria-pressed="{{partner}}" style="position: absolute; left: 12px; top: 100px; z-index: 6; height: 38px; padding: 0 14px; font-size: 14px; background: {{partnerBg}}">{{partnerLabel}}</button>
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 20px; right: 20px; top: 152px; z-index: 8; display: flex; justify-content: center; pointer-events: none; animation: pop 1.8s ease-out forwards">
+<span class="fd" style="padding: 8px 14px; border-radius: 16px; border: 3px solid #7A5545; background: #F9C4BF; font-size: 15px; font-weight: 600">{{toast}}</span>
+</div>
+</sc-if>
+<div style="position: absolute; left: 10px; right: 10px; top: 304px; z-index: 4; display: flex; gap: 6px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button type="button" onClick="{{t.pick}}" aria-pressed="{{t.on}}" class="fd" style="flex: 1; height: 46px; box-sizing: border-box; border: 3px solid #7A5545; border-bottom: {{t.bb}}; border-radius: 16px 16px 0 0; background: {{t.bg}}; font-size: 14px; font-weight: 600; color: #6A4A3C; cursor: pointer">{{t.label}}</button>
+</sc-for>
+</div>
+<div style="position: absolute; left: 0; right: 0; top: 348px; bottom: 92px; background: #FBF3E6; border-top: 3px solid #7A5545; overflow-y: auto; box-sizing: border-box; padding: 14px 16px 12px">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{tiles}}" as="i" hint-placeholder-count="3">
+<button type="button" onClick="{{i.tap}}" disabled="{{i.off}}" style="box-sizing: border-box; min-height: 118px; border: 3px solid {{i.bd}}; border-radius: 18px; background: {{i.bg}}; padding: 8px 4px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 4px; font-family: inherit; color: #6A4A3C; opacity: {{i.fade}}">
+<span style="display: flex; align-items: center; justify-content: center; height: 46px">
+<sc-if value="{{i.isRug}}" hint-placeholder-val="{{false}}"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><ellipse cx="22" cy="24" rx="18" ry="10" fill="#B7D3A0" stroke="#7A5545" stroke-width="2.5"/><ellipse cx="22" cy="24" rx="10" ry="5" fill="none" stroke="#FFF6E3" stroke-width="2"/></svg></sc-if>
+<sc-if value="{{i.isLamp}}" hint-placeholder-val="{{false}}"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="20" y="16" width="4" height="22" fill="#B98254" stroke="#7A5545" stroke-width="2"/><path d="M12 18L16 6H28L32 18Z" fill="#F6DF8E" stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="22" cy="39" rx="9" ry="3" fill="#B98254" stroke="#7A5545" stroke-width="2"/></svg></sc-if>
+<sc-if value="{{i.isChair}}" hint-placeholder-val="{{false}}"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="12" y="6" width="20" height="20" rx="8" fill="#F7B8B2" stroke="#7A5545" stroke-width="2.5"/><rect x="7" y="22" width="30" height="14" rx="6" fill="#F7B8B2" stroke="#7A5545" stroke-width="2.5"/></svg></sc-if>
+<sc-if value="{{i.isArt}}" hint-placeholder-val="{{false}}"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="8" width="32" height="28" rx="4" fill="#FFF6E3" stroke="#7A5545" stroke-width="2.5"/><circle cx="16" cy="18" r="4" fill="#F6DF8E" stroke="#7A5545" stroke-width="1.8"/><path d="M9 33L19 24L25 29L31 22L35 33Z" fill="#B7D3A0" stroke="#7A5545" stroke-width="1.8" stroke-linejoin="round"/></svg></sc-if>
+<sc-if value="{{i.isPlant}}" hint-placeholder-val="{{false}}"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M13 40L15 28H29L31 40Z" fill="#E59A78" stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round"/><path d="M22 28C14 24 13 14 17 7C24 13 26 21 22 28Z" fill="#B7D3A0" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M22 28C28 21 34 18 36 11C27 11 22 17 22 28Z" fill="#7FB070" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/></svg></sc-if>
+<sc-if value="{{i.isLantern}}" hint-placeholder-val="{{false}}"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 2V9" stroke="#7A5545" stroke-width="2.5"/><rect x="11" y="9" width="22" height="28" rx="9" fill="#F6DF8E" stroke="#7A5545" stroke-width="2.5"/><path d="M22 9V37M11 23H33" stroke="#7A5545" stroke-width="1.8"/></svg></sc-if>
+</span>
+<span class="fd" style="font-size: 12.5px; font-weight: 600; line-height: 1.15; text-align: center">{{i.name}}</span>
+<span class="fd" style="padding: 2px 9px; border-radius: 10px; background: {{i.chipBg}}; font-size: 12px; font-weight: 600; line-height: 1.25">{{i.chip}}</span>
+</button>
+</sc-for>
+</div>
+<div style="margin-top: 12px; font-size: 12px; font-weight: 800; line-height: 1.35; color: #8A6B5A; text-align: center">Buy an item once, then move it in and out of your room for free.</div>
+</div>
+<nav class="nav"><a href="Home.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12L12 4L20 12V20H4Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="6" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.8"/></svg>World</a><a href="Quests.dc.html" class="tile"><span class="rdot"></span><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4" stroke="#7A5545" stroke-width="2.4" stroke-linecap="round"/><path d="M6 5H18L15.5 9L18 13H6Z" fill="#F6CF7A" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/></svg>Quests</a><a href="Decorate.dc.html" class="tile on"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="11" rx="4" fill="#F7B3AD" stroke="#7A5545" stroke-width="2"/><rect x="3" y="12" width="18" height="7" rx="3" fill="#F7B3AD" stroke="#7A5545" stroke-width="2"/><path d="M6 19V21M18 19V21" stroke="#7A5545" stroke-width="2" stroke-linecap="round"/></svg>Decorate</a><a href="Bazaar.dc.html" class="tile"><span class="rdot"></span><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10L5 4H19L21 10Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M4 10V20H20V10" fill="#FFF1D6" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><rect x="9" y="13" width="6" height="7" fill="#CFE3B4" stroke="#7A5545" stroke-width="1.8"/></svg>Bazaar</a><a href="Shop.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8H19L18 20H6Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M9 8A3 3 0 0115 8" fill="none" stroke="#7A5545" stroke-width="2" stroke-linecap="round"/></svg>Shop</a></nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { coins: 245, owned: {}, placed: {}, cat: 'furniture', partner: false, toast: null };
+}
+items() {
+return [
+{ id: 'rug', name: 'Sage rug', cat: 'furniture', cost: 30, kind: 'rug' },
+{ id: 'lamp', name: 'Butter lamp', cat: 'furniture', cost: 45, kind: 'lamp' },
+{ id: 'chair', name: 'Blush armchair', cat: 'furniture', cost: 80, kind: 'chair' },
+{ id: 'art', name: 'Morning art', cat: 'decor', cost: 60, kind: 'art' },
+{ id: 'plant', name: 'Fern in a pot', cat: 'decor', cost: 35, kind: 'plant' },
+{ id: 'lantern', name: 'Bazaar lantern', cat: 'limited', cost: 0, kind: 'lantern', locked: '2 of 6 stamps' },
+{ id: 'ramadan', name: 'Ramadan lanterns', cat: 'limited', cost: 0, kind: 'lantern', locked: 'Coming soon' }
+];
+}
+tap(id) {
+const s = this.state;
+const all = this.items();
+let it = null;
+for (let i = 0; i < all.length; i++) { if (all[i].id === id) it = all[i]; }
+if (!it || it.locked) return;
+const owned = Object.assign({}, s.owned);
+const placed = Object.assign({}, s.placed);
+if (!owned[id]) {
+if (s.coins < it.cost) return;
+owned[id] = true;
+placed[id] = true;
+this.setState({ owned: owned, placed: placed, coins: s.coins - it.cost, toast: 'Placed: ' + it.name });
+} else {
+placed[id] = !placed[id];
+this.setState({ placed: placed, toast: placed[id] ? 'Placed: ' + it.name : 'Stored: ' + it.name });
+}
+setTimeout(() => this.setState({ toast: null }), 1800);
+}
+renderVals() {
+const s = this.state;
+const all = this.items();
+const shown = all.filter((it) => it.cat === s.cat);
+const tiles = shown.map((it) => {
+const owned = !!s.owned[it.id];
+const placed = !!s.placed[it.id];
+const locked = !!it.locked;
+const cant = !owned && !locked && s.coins < it.cost;
+let chip = it.cost + ' coins';
+let chipBg = '#F6E3A4';
+if (locked) { chip = it.locked; chipBg = '#E4DACB'; }
+else if (owned && placed) { chip = 'In room'; chipBg = '#CFE3B4'; }
+else if (owned) { chip = 'Stored'; chipBg = '#FFFBF4'; }
+const on = owned && placed;
+return {
+name: it.name,
+chip: chip,
+chipBg: chipBg,
+bg: on ? '#F9C4BF' : '#EFE6D9',
+bd: on ? '#7A5545' : 'transparent',
+off: locked || cant,
+fade: (locked || cant) ? 0.6 : 1,
+isRug: it.kind === 'rug',
+isLamp: it.kind === 'lamp',
+isChair: it.kind === 'chair',
+isArt: it.kind === 'art',
+isPlant: it.kind === 'plant',
+isLantern: it.kind === 'lantern',
+tap: () => this.tap(it.id)
+};
+});
+const cats = [['furniture', 'Furniture'], ['decor', 'Decor'], ['limited', 'Limited']];
+const tabs = cats.map((c) => ({
+label: c[1],
+bg: s.cat === c[0] ? '#FBF3E6' : '#F5B0AA',
+bb: s.cat === c[0] ? '3px solid #FBF3E6' : '3px solid #7A5545',
+on: s.cat === c[0],
+pick: () => this.setState({ cat: c[0] })
+}));
+const p = s.placed;
+return {
+coins: s.coins,
+tiles: tiles,
+tabs: tabs,
+o: { rug: p.rug ? 1 : 0, lamp: p.lamp ? 1 : 0, chair: p.chair ? 1 : 0, art: p.art ? 1 : 0, plant: p.plant ? 1 : 0 },
+partner: s.partner,
+partnerO: s.partner ? 1 : 0,
+partnerBg: s.partner ? '#F9C4BF' : '#FFFBF4',
+partnerLabel: s.partner ? 'Shared Home: partner joined' : 'Invite a partner',
+togglePartner: () => this.setState({ partner: !this.state.partner }),
+meX: s.partner ? 150 : 171,
+hasToast: !!s.toast,
+toast: s.toast || ''
+};
+}
+}
+</script>
+</body>
+</html>

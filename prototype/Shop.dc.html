@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coin Shop</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.fd{font-family:'Fredoka','Nunito',sans-serif}
+.chip{border:3px solid #7A5545;border-radius:16px;box-shadow:0 3px 0 #D9B8A0;cursor:pointer;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;color:#6A4A3C;background:#FFFBF4}
+.chip:active{transform:translateY(2px);box-shadow:0 1px 0 #D9B8A0}
+.chip:disabled{cursor:default}
+.wood{border:3px solid #7A5545;border-radius:16px;background:#F59A93;box-shadow:0 3px 0 #C9726C;color:#FFFBF4;text-shadow:0 1px 0 #B85C57;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;cursor:pointer}
+.wood:active{transform:translateY(2px);box-shadow:0 1px 0 #C9726C}
+.wood:disabled{background:#D9C9BC;border-color:#A8907F;box-shadow:0 3px 0 #A8907F;text-shadow:none;cursor:default}
+.pill{display:flex;align-items:center;gap:6px;height:36px;padding:0 6px;box-sizing:border-box;border-radius:18px;background:#FFFBF4;border:3px solid #7A5545;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:16px;color:#6A4A3C}
+.plus{width:22px;height:22px;box-sizing:border-box;border-radius:11px;background:#8CCB6B;border:2px solid #7A5545;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;line-height:1}
+.nav{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;height:92px;box-sizing:border-box;padding:10px 8px 14px;background:#FBF1DE;border-top:3px solid #7A5545;z-index:5}
+.tile{position:relative;width:62px;height:64px;box-sizing:border-box;border:3px solid #7A5545;border-radius:16px;background:#FFFBF4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:'Fredoka','Nunito',sans-serif;font-size:11.5px;font-weight:600;color:#6A4A3C}
+.tile.on{background:#CFE3B4}
+.tile:active{transform:translateY(2px)}
+.rdot{position:absolute;top:-9px;right:-7px;width:18px;height:18px;box-sizing:border-box;border-radius:50%;background:#F04E4E;border:3px solid #FFFBF4}
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.fd{font-family:'Fredoka','Nunito',sans-serif}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes pop{0%{transform:translateY(-24px);opacity:0}12%{transform:translateY(0);opacity:1}85%{opacity:1}100%{opacity:0}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FBF3E6; font-family: 'Nunito', system-ui, sans-serif; color: #6A4A3C; overflow: hidden"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="ink" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="sticker" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="w"/><feMorphology in="w" operator="dilate" radius="2.6" result="d"/><feFlood flood-color="#FFFBF4"/><feComposite in2="d" operator="in" result="halo"/><feMerge><feMergeNode in="halo"/><feMergeNode in="w"/></feMerge></filter></defs></svg>
+<svg viewBox="0 0 390 236" width="390" height="236" aria-hidden="true" style="filter:url(#ink); position: absolute; left: 0; top: 0">
+<rect width="390" height="236" fill="#FBE3D8"/>
+<g fill="#F3CFC0"><circle cx="24" cy="120" r="3"/><circle cx="360" cy="110" r="3"/><circle cx="60" cy="160" r="3"/><circle cx="330" cy="150" r="3"/></g>
+<path d="M120 160V104C120 70 270 70 270 104V160Z" fill="#CBE7EC" stroke="#7A5545" stroke-width="3" stroke-linejoin="round" opacity="0"/>
+<g stroke="#7A5545" stroke-width="3" stroke-linejoin="round">
+<path d="M14 170V120C14 94 70 94 70 120V170Z" fill="#CBE7EC"/>
+<path d="M320 170V120C320 94 376 94 376 120V170Z" fill="#CBE7EC"/>
+<rect x="8" y="166" width="68" height="8" rx="3" fill="#FFF6E3"/><rect x="314" y="166" width="68" height="8" rx="3" fill="#FFF6E3"/>
+</g>
+<g stroke="#7A5545" stroke-width="2.5" fill="none"><path d="M42 100V170M14 134H70M348 100V170M320 134H376"/></g>
+<g stroke="#7A5545" stroke-width="3" stroke-linejoin="round">
+<rect x="84" y="92" width="70" height="8" rx="3" fill="#C98B52"/><rect x="236" y="92" width="70" height="8" rx="3" fill="#C98B52"/>
+</g>
+<g stroke="#7A5545" stroke-width="2.2" stroke-linejoin="round">
+<rect x="92" y="68" width="16" height="24" rx="5" fill="#F3B8B0"/><rect x="112" y="76" width="16" height="16" rx="5" fill="#B7D3A0"/><rect x="132" y="64" width="16" height="28" rx="5" fill="#F6DF8E"/>
+<rect x="244" y="74" width="18" height="18" rx="5" fill="#CBE7EC"/><rect x="266" y="66" width="16" height="26" rx="5" fill="#F3B8B0"/><circle cx="292" cy="82" r="10" fill="#FFF6E3"/>
+</g>
+<path d="M150 22H240V42Q234 48 228 42Q222 48 216 42Q210 48 204 42Q198 48 192 42Q186 48 180 42Q174 48 168 42Q162 48 156 42Q150 48 150 42Z" fill="#F3B8B0" stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round" opacity="0"/>
+</svg>
+<div style="position: absolute; left: 14px; right: 14px; top: 46px; z-index: 6; display: flex; align-items: center; gap: 8px">
+<a href="Home.dc.html" aria-label="Back to the village" class="chip" style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 21px; flex-shrink: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6A4A3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+</a>
+<div class="fd" style="padding: 7px 20px; border-radius: 16px; border: 3px solid #7A5545; background: #F0A25E; box-shadow: 0 3px 0 #D9B8A0; color: #FFF6E3; font-size: 19px; font-weight: 600">Coin Shop</div>
+<div class="pill" style="margin-left: auto">
+<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#F2C34E" stroke="#7A5545" stroke-width="2"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="#7A5545" stroke-width="1.6"/></svg>
+<span style="min-width: 36px; text-align: center">{{coins}}</span>
+</div>
+</div>
+<svg viewBox="0 0 60 84" width="76" height="106" role="img" aria-label="The shopkeeper" style="filter:url(#sticker); position: absolute; left: 157px; top: 104px; z-index: 2"><g style="animation: bob 1.8s ease-in-out infinite"><ellipse cx="30" cy="80" rx="16" ry="3.4" fill="rgba(122,85,69,0.18)"/><path d="M5 30C3 10 16 4 30 4C44 4 57 10 55 30C57 44 56 52 50 56L10 56C4 52 3 44 5 30Z" fill="#F6DE8A" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><rect x="23" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><rect x="31.5" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="25.5" cy="76" rx="6" ry="3.4" fill="#FFFBF4" stroke="#7A5545" stroke-width="2"/><ellipse cx="34.5" cy="76" rx="6" ry="3.4" fill="#FFFBF4" stroke="#7A5545" stroke-width="2"/><rect x="18" y="52" width="24" height="17" rx="7" fill="#F3B8B0" stroke="#7A5545" stroke-width="2.2"/><path d="M24 52L30 59L36 52Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.6" stroke-linejoin="round"/><circle cx="15" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><circle cx="45" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="30" cy="31" rx="24" ry="22" fill="#FDE9DC" stroke="#7A5545" stroke-width="2.4"/><path d="M6 30C6 12 18 6 30 6C42 6 54 12 54 30C48 22 42 18 36 18C32 24 18 22 6 30Z" fill="#F6DE8A" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 10Q22 14 24 18M37 10Q39 14 37 17" fill="none" stroke="#E0B84F" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="21" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><ellipse cx="39" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><circle cx="21.8" cy="34.6" r="0.9" fill="#FFFFFF"/><circle cx="39.8" cy="34.6" r="0.9" fill="#FFFFFF"/><ellipse cx="13.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><ellipse cx="46.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><path d="M28 41.5Q30 43.5 32 41.5" fill="none" stroke="#7A5545" stroke-width="1.4" stroke-linecap="round"/><path d="M7 22C5 4 55 4 53 22C45 12 15 12 7 22Z" fill="#9CC9E6" stroke="#7A5545" stroke-width="2.2" stroke-linejoin="round"/><path d="M10 19C20 13 40 13 50 19" fill="none" stroke="#FFFBF4" stroke-width="2.4"/></g></svg>
+<svg viewBox="0 0 390 52" width="390" height="52" aria-hidden="true" style="filter:url(#ink); position: absolute; left: 0; top: 184px; z-index: 3">
+<rect x="0" y="4" width="390" height="48" fill="#C98B52" stroke="#7A5545" stroke-width="3"/>
+<rect x="-2" y="0" width="394" height="12" rx="4" fill="#E0A96B" stroke="#7A5545" stroke-width="3"/>
+<path d="M65 12V52M130 12V52M195 12V52M260 12V52M325 12V52" stroke="#9E6C3B" stroke-width="2.5"/>
+<g stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round"><rect x="40" y="-14" width="30" height="16" rx="4" fill="#FFF6E3"/><circle cx="330" cy="-6" r="10" fill="#F6DF8E"/></g>
+</svg>
+<div style="position: absolute; left: 14px; right: 14px; top: 248px; z-index: 4; display: flex; gap: 8px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button type="button" class="chip" onClick="{{t.pick}}" aria-pressed="{{t.on}}" style="flex: 1; height: 38px; font-size: 15px; border-radius: 14px; background: {{t.bg}}">{{t.label}}</button>
+</sc-for>
+</div>
+<div style="position: absolute; left: 0; right: 0; top: 296px; bottom: 92px; overflow-y: auto; box-sizing: border-box; padding: 4px 14px 16px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{cards}}" as="c" hint-placeholder-count="4">
+<div style="box-sizing: border-box; padding: 10px; border-radius: 20px; background: #EFE6D9; border: 3px solid transparent; display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: {{c.fade}}">
+<div style="width: 64px; height: 64px; border-radius: 16px; background: {{c.tint}}; border: 2px solid #7A5545; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{c.isCup}}" hint-placeholder-val="{{false}}">
+<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M9 16H31V30Q31 38 23 38H17Q9 38 9 30Z" fill="#FFF6E3" stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round"/><path d="M31 20H35Q39 20 39 25Q39 30 31 30" fill="none" stroke="#7A5545" stroke-width="2.5"/><path d="M16 12Q13 8 16 4M24 12Q21 8 24 4" fill="none" stroke="#D9B8A0" stroke-width="2.5" stroke-linecap="round"/></svg>
+</sc-if>
+<sc-if value="{{c.isCake}}" hint-placeholder-val="{{false}}">
+<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="7" y="22" width="30" height="16" rx="5" fill="#F3B8B0" stroke="#7A5545" stroke-width="2.5"/><rect x="13" y="11" width="18" height="12" rx="4" fill="#FFF6E3" stroke="#7A5545" stroke-width="2.5"/><circle cx="22" cy="7" r="3.5" fill="#E5655F" stroke="#7A5545" stroke-width="2"/></svg>
+</sc-if>
+<sc-if value="{{c.isTicket}}" hint-placeholder-val="{{false}}">
+<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M5 12H39V19A3 3 0 0 0 39 25V32H5V25A3 3 0 0 0 5 19Z" fill="#CBE7EC" stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round"/><path d="M16 14V30" stroke="#7A5545" stroke-width="2.2" stroke-dasharray="2 3"/><path d="M26 22H33" stroke="#7A5545" stroke-width="2.5" stroke-linecap="round"/></svg>
+</sc-if>
+<sc-if value="{{c.isCurtain}}" hint-placeholder-val="{{false}}">
+<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="5" y="6" width="34" height="4" rx="2" fill="#C98B52" stroke="#7A5545" stroke-width="2"/><path d="M8 10H20Q18 24 21 38H8Z" fill="#F6DF8E" stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round"/><path d="M36 10H24Q26 24 23 38H36Z" fill="#F6DF8E" stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round"/></svg>
+</sc-if>
+<sc-if value="{{c.isPillow}}" hint-placeholder-val="{{false}}">
+<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M8 12Q22 8 36 12Q40 22 36 32Q22 36 8 32Q4 22 8 12Z" fill="#FFF6E3" stroke="#7A5545" stroke-width="2.5" stroke-linejoin="round"/><path d="M22 14C17 18 17 22 22 28C27 22 27 18 22 14Z" fill="#F0A65E" stroke="#7A5545" stroke-width="1.8" stroke-linejoin="round"/></svg>
+</sc-if>
+<sc-if value="{{c.isLantern}}" hint-placeholder-val="{{false}}">
+<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 2V9" stroke="#7A5545" stroke-width="2.5"/><rect x="11" y="9" width="22" height="28" rx="9" fill="#F6DF8E" stroke="#7A5545" stroke-width="2.5"/><path d="M22 9V37M11 23H33" stroke="#7A5545" stroke-width="1.8"/></svg>
+</sc-if>
+<sc-if value="{{c.isArch}}" hint-placeholder-val="{{false}}">
+<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M9 40V20C9 4 35 4 35 20V40" fill="none" stroke="#7A5545" stroke-width="8" stroke-linecap="round"/><path d="M9 40V20C9 4 35 4 35 20V40" fill="none" stroke="#C98B52" stroke-width="4" stroke-linecap="round"/><circle cx="13" cy="12" r="4" fill="#F3B8B0" stroke="#7A5545" stroke-width="1.8"/><circle cx="31" cy="12" r="4" fill="#FFF6E3" stroke="#7A5545" stroke-width="1.8"/><circle cx="22" cy="7" r="4" fill="#F6DF8E" stroke="#7A5545" stroke-width="1.8"/></svg>
+</sc-if>
+</div>
+<div class="fd" style="font-size: 14px; font-weight: 600; line-height: 1.15; text-align: center">{{c.name}}</div>
+<div style="font-size: 11.5px; font-weight: 800; line-height: 1.25; text-align: center; color: #8A6B5A; min-height: 28px">{{c.note}}</div>
+<button type="button" class="chip" onClick="{{c.tap}}" disabled="{{c.off}}" style="width: 100%; height: 38px; font-size: 14px; border-radius: 14px; background: {{c.btnBg}}">{{c.btn}}</button>
+</div>
+</sc-for>
+</div>
+<div style="margin-top: 14px; font-size: 12px; font-weight: 800; line-height: 1.4; color: #8A6B5A; text-align: center">Coins can't be cashed out or bought. Everything here is earned by finishing real-life goals.</div>
+</div>
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 20px; right: 20px; top: 296px; z-index: 12; display: flex; justify-content: center; pointer-events: none; animation: pop 2s ease-out forwards">
+<span class="fd" style="padding: 8px 14px; border-radius: 16px; border: 3px solid #7A5545; background: #F9C4BF; box-shadow: 0 4px 0 #D9B8A0; font-size: 15px; font-weight: 600">{{toast}}</span>
+</div>
+</sc-if>
+<nav class="nav"><a href="Home.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12L12 4L20 12V20H4Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="6" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.8"/></svg>World</a><a href="Quests.dc.html" class="tile"><span class="rdot"></span><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4" stroke="#7A5545" stroke-width="2.4" stroke-linecap="round"/><path d="M6 5H18L15.5 9L18 13H6Z" fill="#F6CF7A" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/></svg>Quests</a><a href="Decorate.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="11" rx="4" fill="#F7B3AD" stroke="#7A5545" stroke-width="2"/><rect x="3" y="12" width="18" height="7" rx="3" fill="#F7B3AD" stroke="#7A5545" stroke-width="2"/><path d="M6 19V21M18 19V21" stroke="#7A5545" stroke-width="2" stroke-linecap="round"/></svg>Decorate</a><a href="Bazaar.dc.html" class="tile"><span class="rdot"></span><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10L5 4H19L21 10Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M4 10V20H20V10" fill="#FFF1D6" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><rect x="9" y="13" width="6" height="7" fill="#CFE3B4" stroke="#7A5545" stroke-width="1.8"/></svg>Bazaar</a><a href="Shop.dc.html" class="tile on"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8H19L18 20H6Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M9 8A3 3 0 0115 8" fill="none" stroke="#7A5545" stroke-width="2" stroke-linecap="round"/></svg>Shop</a></nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { tab: 'vouchers', coins: 245, claimed: {}, toast: null };
+}
+items() {
+return [
+{ id: 'v1', tab: 'vouchers', name: 'Kopi voucher', note: 'IDR 20k off at a partner cafe', cost: 120, kind: 'cup', tint: '#F8E3C2' },
+{ id: 'v2', tab: 'vouchers', name: 'Bakery 10% off', note: 'Any weekend this month', cost: 80, kind: 'cake', tint: '#F9D6D0' },
+{ id: 'v3', tab: 'vouchers', name: 'Co-working day', note: 'One free day pass', cost: 200, kind: 'ticket', tint: '#DDEFF2' },
+{ id: 'v4', tab: 'vouchers', name: 'Cinema for two', note: 'Two tickets, any show', cost: 260, kind: 'ticket', tint: '#DDEFF2' },
+{ id: 'd1', tab: 'decor', name: 'Sunny curtains', note: 'Warm light for your window', cost: 50, kind: 'curtain', tint: '#FBF0C4' },
+{ id: 'd2', tab: 'decor', name: 'Pillow set', note: 'Two cozy pillows', cost: 40, kind: 'pillow', tint: '#F9D6D0' },
+{ id: 'd3', tab: 'decor', name: 'Porch lantern', note: 'Glows after dark', cost: 90, kind: 'lantern', tint: '#FBF0C4' },
+{ id: 'd4', tab: 'decor', name: 'Garden arch', note: 'Roses and ivy', cost: 140, kind: 'arch', tint: '#DCEBCF' },
+{ id: 'm1', tab: 'limited', name: 'Founder lantern', note: 'Reach level 5', cost: 0, kind: 'lantern', tint: '#EFE6D2', locked: 'Level 5' },
+{ id: 'm2', tab: 'limited', name: 'Wedding arch', note: 'Finish the Wedding passport', cost: 0, kind: 'arch', tint: '#EFE6D2', locked: '4 of 4 stamps' },
+{ id: 'm3', tab: 'limited', name: 'Ramadan lights', note: 'Seasonal drop', cost: 0, kind: 'lantern', tint: '#EFE6D2', locked: 'Coming soon' }
+];
+}
+claim(id) {
+const s = this.state;
+const it = this.items().filter((x) => x.id === id)[0];
+if (!it || it.locked || s.claimed[id] || s.coins < it.cost) return;
+const claimed = Object.assign({}, s.claimed);
+claimed[id] = true;
+this.setState({ claimed: claimed, coins: s.coins - it.cost, toast: 'Claimed: ' + it.name });
+setTimeout(() => this.setState({ toast: null }), 2000);
+}
+renderVals() {
+const s = this.state;
+const cards = this.items().filter((x) => x.tab === s.tab).map((it) => {
+const got = !!s.claimed[it.id];
+const locked = !!it.locked;
+const cant = !got && !locked && s.coins < it.cost;
+let btn = 'Claim ' + it.cost;
+let btnBg = '#F6DF8E';
+if (locked) { btn = it.locked; btnBg = '#EADFC4'; }
+else if (got) { btn = it.tab === 'decor' ? 'In your room' : 'In your bag'; btnBg = '#B7D3A0'; }
+else if (cant) { btn = 'Need ' + (it.cost - s.coins) + ' more'; btnBg = '#EADFC4'; }
+return {
+name: it.name,
+note: it.note,
+tint: it.tint,
+btn: btn,
+btnBg: btnBg,
+off: locked || got || cant,
+fade: locked ? 0.75 : 1,
+isCup: it.kind === 'cup',
+isCake: it.kind === 'cake',
+isTicket: it.kind === 'ticket',
+isCurtain: it.kind === 'curtain',
+isPillow: it.kind === 'pillow',
+isLantern: it.kind === 'lantern',
+isArch: it.kind === 'arch',
+tap: () => this.claim(it.id)
+};
+});
+const tabs = [['vouchers', 'Vouchers'], ['decor', 'Decor'], ['limited', 'Limited']].map((t) => ({
+label: t[1],
+on: s.tab === t[0],
+bg: s.tab === t[0] ? '#F9C4BF' : '#FFF6E3',
+pick: () => this.setState({ tab: t[0] })
+}));
+return { coins: s.coins, cards: cards, tabs: tabs, hasToast: !!s.toast, toast: s.toast || '' };
+}
+}
+</script>
+</body>
+</html>

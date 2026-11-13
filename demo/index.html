@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIFE, BY DESIGN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fbf8f1;
+      --paper: #fffdf9;
+      --ink: #38372f;
+      --muted: #858176;
+      --line: #eee9df;
+      --sage: #8ca18a;
+      --sage-light: #edf2e8;
+      --pink: #e8b6aa;
+      --pink-light: #f9eeea;
+      --yellow: #f3d37a;
+      --yellow-light: #fbf4df;
+      --lavender: #e9e4f0;
+      --shadow: 0 12px 35px rgba(67, 55, 39, .07);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .app { display: grid; grid-template-columns: 248px 1fr; min-height: 100vh; }
+    aside {
+      position: sticky; top: 0; height: 100vh; padding: 28px 18px;
+      background: #f5f1e8; border-right: 1px solid var(--line);
+      display: flex; flex-direction: column;
+    }
+    .brand { padding: 2px 12px 30px; }
+    .brand-name { font: 600 22px "Playfair Display", serif; letter-spacing: .02em; }
+    .brand-tag { color: var(--muted); font-size: 11px; letter-spacing: .12em; margin-top: 5px; }
+    .nav { display: grid; gap: 8px; }
+    .nav button {
+      text-align: left; border: 0; background: transparent; padding: 13px 14px;
+      border-radius: 13px; color: #777468; font-weight: 600; transition: .2s;
+    }
+    .nav button:hover, .nav button.active { background: var(--paper); color: var(--ink); box-shadow: 0 4px 14px #5245270d; }
+    .nav .icon { display: inline-block; width: 27px; font-size: 17px; }
+    .side-note { margin-top: auto; padding: 18px 14px; border-radius: 16px; background: #e9eee4; color: #66745f; font-size: 12px; line-height: 1.6; }
+    main { min-width: 0; }
+    .topbar {
+      height: 76px; padding: 0 4.5%; display: flex; justify-content: flex-end;
+      align-items: center; gap: 12px; border-bottom: 1px solid var(--line);
+      background: rgba(251,248,241,.8);
+    }
+    .coin-pill { border: 1px solid #eadcae; background: var(--yellow-light); border-radius: 99px; padding: 9px 14px; font-weight: 700; font-size: 13px; }
+    .avatar-small { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--pink-light); }
+    #view { max-width: 1250px; margin: auto; padding: 34px 4.5% 70px; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .14em; color: var(--sage); font-size: 11px; font-weight: 700; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, .serif { font-family: "Playfair Display", serif; font-weight: 600; }
+    h1 { font-size: clamp(30px, 4vw, 43px); margin: 7px 0 10px; }
+    h2 { font-size: 25px; margin-bottom: 8px; }
+    h3 { font-size: 16px; margin-bottom: 8px; }
+    .subtle { color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .grid { display: grid; gap: 18px; }
+    .two-col { grid-template-columns: 1.45fr 1fr; }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+    .welcome {
+      padding: 30px; border-radius: 24px; min-height: 210px; overflow: hidden;
+      background: linear-gradient(110deg, #f3e7d8 0%, #f5e9e3 57%, #e8eee4 100%);
+      position: relative; margin-bottom: 20px;
+    }
+    .welcome:after { content: "☁️"; position: absolute; right: 12%; top: 22px; font-size: 48px; opacity: .8; }
+    .welcome .subtle { max-width: 440px; }
+    .btn {
+      border: 0; border-radius: 99px; padding: 11px 17px; background: var(--sage);
+      color: white; font-weight: 700; font-size: 13px; transition: .2s;
+    }
+    .btn:hover { filter: brightness(.95); transform: translateY(-1px); }
+    .btn.soft { background: var(--sage-light); color: #586d53; }
+    .btn.pink { background: var(--pink-light); color: #996f65; }
+    .btn.outline { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .btn:disabled { opacity: .5; cursor: default; transform: none; }
+    .card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .task { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+    .task:first-of-type { border-top: 0; }
+    .check {
+      width: 24px; height: 24px; flex: 0 0 24px; border: 1.5px solid #d5d0c4; border-radius: 50%;
+      background: white; color: white; display: grid; place-items: center; font-size: 13px;
+    }
+    .check.done { background: var(--sage); border-color: var(--sage); }
+    .task-copy { flex: 1; font-size: 14px; }
+    .task-copy small { display: block; color: var(--muted); margin-top: 4px; font-size: 11px; }
+    .reward-tag { font-size: 11px; color: #937d42; background: var(--yellow-light); border-radius: 99px; padding: 5px 8px; white-space: nowrap; }
+    .stat { display: flex; align-items: center; gap: 13px; }
+    .stat-icon { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; font-size: 20px; background: var(--sage-light); }
+    .stat strong { font-size: 22px; display: block; }
+    .stat small { color: var(--muted); }
+    .progress { height: 8px; background: #f0eee7; border-radius: 99px; overflow: hidden; margin: 12px 0 7px; }
+    .progress span { display: block; height: 100%; background: var(--sage); border-radius: inherit; }
+    .room-scene {
+      min-height: 240px; position: relative; overflow: hidden; border-radius: 16px;
+      background: linear-gradient(#e9e3d6 0 68%, #c8b9a2 68% 100%);
+      border: 1px solid #e6dece;
+    }
+    .room-window { position: absolute; left: 10%; top: 12%; width: 23%; height: 39%; border: 7px solid #fffaf1; border-radius: 7px; background: linear-gradient(#c9e2e0, #f5dfbd); box-shadow: 0 2px 6px #847b6940; }
+    .room-window:after { content: ""; position: absolute; left: 48%; top: 0; height: 100%; border-left: 3px solid #fffaf1; }
+    .room-sofa { position: absolute; bottom: 12%; left: 34%; width: 38%; height: 31%; border-radius: 18px 18px 9px 9px; background: #95a78e; box-shadow: inset 0 -12px #788d75; }
+    .room-sofa:before { content: ""; position: absolute; left: -9%; top: 28%; width: 118%; height: 26%; border-radius: 9px; background: #a7b49e; }
+    .room-rug { position: absolute; bottom: 4%; left: 27%; width: 52%; height: 16%; border-radius: 50%; background: #e8c8b9; }
+    .room-plant { position: absolute; right: 13%; bottom: 17%; font-size: 46px; }
+    .room-lamp { position: absolute; left: 19%; bottom: 15%; font-size: 35px; }
+    .room-deco { position: absolute; right: 20%; top: 22%; font-size: 26px; }
+    .room-floor { position: absolute; bottom: 0; left: 0; right: 0; height: 32%; background: repeating-linear-gradient(90deg, transparent 0 48px, #b5a58e 49px 51px); opacity: .4; }
+    .room-item-row { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 14px; }
+    .chip { font-size: 11px; background: #f4f1ea; padding: 7px 10px; border-radius: 99px; color: #716e62; }
+    .category-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .category { border: 1px solid var(--line); background: white; color: #777468; border-radius: 99px; padding: 9px 12px; font-size: 12px; }
+    .category.selected { border-color: #bac9b3; background: var(--sage-light); color: #586d53; }
+    .plan-row { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+    .plan-date { min-width: 47px; height: 47px; border-radius: 13px; background: var(--pink-light); display: grid; place-items: center; text-align: center; color: #946f65; font-size: 11px; font-weight: 700; }
+    .plan-date b { display: block; font-size: 17px; }
+    .field { width: 100%; padding: 11px 12px; border: 1px solid var(--line); background: white; border-radius: 12px; color: var(--ink); outline: none; }
+    .field:focus { border-color: #a8b69e; }
+    .form-row { display: flex; gap: 8px; margin-top: 12px; }
+    .form-row .field { min-width: 0; }
+    textarea.field { min-height: 110px; resize: vertical; }
+    .store-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .store-item { border: 1px solid var(--line); border-radius: 16px; padding: 15px; background: white; }
+    .item-art { height: 100px; display: grid; place-items: center; background: #f5f1e8; border-radius: 12px; font-size: 48px; margin-bottom: 12px; }
+    .store-item p { color: var(--muted); font-size: 12px; margin: 4px 0 12px; }
+    .store-item .btn { padding: 9px 12px; font-size: 11px; }
+    .voucher { display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 15px 0; border-top: 1px solid var(--line); }
+    .voucher:first-of-type { border-top: 0; }
+    .voucher-logo { width: 44px; height: 44px; display: grid; place-items: center; background: var(--yellow-light); border-radius: 14px; font-size: 21px; }
+    .voucher-info { flex: 1; }
+    .voucher-info small { display: block; color: var(--muted); margin-top: 4px; }
+    .section { margin-top: 26px; }
+    .toast { position: fixed; right: 22px; bottom: 22px; background: #353b32; color: white; padding: 13px 17px; border-radius: 12px; box-shadow: var(--shadow); z-index: 20; animation: fade .25s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .empty { color: var(--muted); text-align: center; padding: 22px 10px; font-size: 13px; }
+    .muted-line { border: 0; border-top: 1px solid var(--line); margin: 18px 0; }
+    .notice { padding: 12px 14px; border-radius: 12px; background: var(--yellow-light); color: #796a3e; font-size: 12px; line-height: 1.5; }
+    .footer-note { color: var(--muted); font-size: 11px; margin-top: 20px; }
+    @media (max-width: 850px) {
+      .app { display: block; }
+      aside { position: fixed; z-index: 10; top: auto; bottom: 0; height: auto; width: 100%; padding: 7px 6px calc(7px + env(safe-area-inset-bottom)); border: 0; border-top: 1px solid var(--line); background: #fffdf9; }
+      .brand, .side-note { display: none; }
+      .nav { display: flex; justify-content: space-around; gap: 2px; }
+      .nav button { padding: 7px 4px; font-size: 10px; text-align: center; flex: 1; }
+      .nav .icon { display: block; width: auto; font-size: 18px; margin-bottom: 3px; }
+      .topbar { height: 60px; }
+      #view { padding: 25px 18px 100px; }
+      .two-col { grid-template-columns: 1fr; }
+      .three-col { grid-template-columns: 1fr 1fr; }
+      .store-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .three-col, .store-grid { grid-template-columns: 1fr; }
+      .welcome { padding: 24px 20px; }
+      .welcome:after { right: 5%; top: 10px; }
+      .card { padding: 18px; }
+      .form-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand">
+        <div class="brand-name">LIFE, BY DESIGN</div>
+        <div class="brand-tag">YOUR LIFE. YOUR CHOICES. YOUR WORLD.</div>
+      </div>
+      <nav class="nav" id="nav">
+        <button class="active" data-page="home"><span class="icon">⌂</span>Home</button>
+        <button data-page="life"><span class="icon">✎</span>My Life</button>
+        <button data-page="world"><span class="icon">⌂</span>My World</button>
+        <button data-page="rewards"><span class="icon">✧</span>Rewards</button>
+        <button data-page="profile"><span class="icon">♡</span>Profile</button>
+      </nav>
+      <div class="side-note">There’s no one right way to live. Make room for the life that feels like yours. 🌿</div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div class="coin-pill">🟡 <span id="coinBalance">0</span> LIFE COINS</div>
+        <div class="avatar-small">🌼</div>
+      </header>
+      <div id="view"></div>
+    </main>
+  </div>
+
+  <script>
+    const categories = [
+      "Love & Relationships", "Wedding & Marriage Planning", "Independent Living",
+      "Career & Business", "Money & Finance", "Travel & Adventure",
+      "Health & Wellness", "Home & Lifestyle", "Personal Growth"
+    ];
+    const catalog = [
+      { id: "plant", name: "Sunny little plant", art: "🪴", price: 35, desc: "A leafy friend for your window." },
+      { id: "lamp", name: "Evening glow lamp", art: "🏮", price: 45, desc: "Make your room feel extra cozy." },
+      { id: "art", name: "Little daydream print", art: "🖼️", price: 55, desc: "A gentle reminder to dream." },
+      { id: "cushion", name: "Blush cushion", art: "🛋️", price: 30, desc: "A soft finishing touch." },
+      { id: "flowers", name: "Market flowers", art: "💐", price: 40, desc: "A pop of color for your home." },
+      { id: "star", name: "Starry rug", art: "🌙", price: 65, desc: "A little magic underfoot." }
+    ];
+    const todayKey = new Date().toISOString().slice(0, 10);
+    const defaultState = {
+      coins: 120, page: "home", categories: ["Health & Wellness", "Home & Lifestyle", "Personal Growth"],
+      completed: {}, owned: [], plans: [
+        { title: "Take a slow morning walk", date: "Today", time: "8:30 AM" },
+        { title: "A little time for myself", date: "Tomorrow", time: "6:00 PM" }
+      ],
+      journal: "", transactions: [{ label: "Welcome bonus", amount: 120, date: todayKey }],
+      redeemed: [], tasks: [
+        { id: "water", title: "Take a mindful moment", detail: "Pause and check in with yourself.", reward: 5 },
+        { id: "space", title: "Make one corner feel lovely", detail: "A tiny reset counts.", reward: 5 },
+        { id: "plan", title: "Choose one thing to look forward to", detail: "It can be something small.", reward: 5 }
+      ],
+      model: { users: 5000, subscribers: 100, subscription: 49000, campaigns: 3000000, items: 1250000, affiliate: 500000, expenses: 15000000 }
+    };
+    let state;
+    try {
+      state = { ...defaultState, ...JSON.parse(localStorage.getItem("lifeByDesignDemo") || "{}") };
+    } catch { state = { ...defaultState }; }
+    const view = document.getElementById("view");
+
+    function save() {
+      localStorage.setItem("lifeByDesignDemo", JSON.stringify(state));
+      document.getElementById("coinBalance").textContent = state.coins.toLocaleString("id-ID");
+    }
+    function esc(value) {
+      return String(value).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+    }
+    function toast(message) {
+      document.querySelector(".toast")?.remove();
+      const el = document.createElement("div");
+      el.className = "toast";
+      el.textContent = message;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 2600);
+    }
+    function earnedToday() {
+      return state.transactions.filter(t => t.date === todayKey && t.amount > 0)
+        .reduce((sum, t) => sum + t.amount, 0);
+    }
+    function earn(label, amount) {
+      const room = Math.max(0, 40 - earnedToday());
+      const actual = Math.min(amount, room);
+      if (!actual) { toast("You’ve reached today’s coin limit. Take a gentle break 🌿"); return; }
+      state.coins += actual;
+      state.transactions.unshift({ label, amount: actual, date: todayKey });
+      save();
+      toast(`Lovely! +${actual} LIFE COINS`);
+    }
+    function navTo(page) {
+      state.page = page;
+      document.querySelectorAll(".nav button").forEach(b => b.classList.toggle("active", b.dataset.page === page));
+      save();
+      render();
+    }
+    function taskDone(id) { return !!state.completed[todayKey + ":" + id]; }
+    function taskMarkup(task) {
+      const done = taskDone(task.id);
+      return `<div class="task">
+        <button class="check ${done ? "done" : ""}" data-action="task" data-id="${task.id}" aria-label="Complete task">${done ? "✓" : ""}</button>
+        <div class="task-copy">${esc(task.title)}<small>${esc(task.detail)}</small></div>
+        <span class="reward-tag">${done ? "Done" : `+${task.reward} coins`}</span>
+      </div>`;
+    }
+    function roomMarkup() {
+      return `<div class="room-scene" aria-label="Illustrated cozy virtual room">
+        <div class="room-window"></div><div class="room-floor"></div>
+        <div class="room-rug"></div><div class="room-sofa"></div>
+        <div class="room-lamp">${state.owned.includes("lamp") ? "🏮" : "🪴"}</div>
+        <div class="room-plant">${state.owned.includes("plant") ? "🌿" : "🌱"}</div>
+        <div class="room-deco">${state.owned.includes("art") ? "🖼️" : "✨"}</div>
+      </div>`;
+    }
+    function homePage() {
+      const doneCount = state.tasks.filter(t => taskDone(t.id)).length;
+      const activePlans = state.plans.slice(0, 3);
+      return `
+        <section class="welcome">
+          <div class="eyebrow">A little space for your life</div>
+          <h1>Your life, your way.</h1>
+          <p class="subtle">Make a plan, celebrate a small win, or simply take a breath. Your version of a good life is yours to design.</p>
+          <button class="btn" data-goto="life">Explore My Life →</button>
+        </section>
+        <div class="grid three-col">
+          <div class="card stat"><div class="stat-icon">🟡</div><div><strong>${state.coins.toLocaleString("id-ID")}</strong><small>LIFE COINS</small></div></div>
+          <div class="card stat"><div class="stat-icon">🌱</div><div><strong>${doneCount}/${state.tasks.length}</strong><small>Today's little wins</small></div></div>
+          <div class="card stat"><div class="stat-icon">🏡</div><div><strong>${state.owned.length}</strong><small>Room treasures</small></div></div>
+        </div>
+        <div class="grid two-col section">
+          <div class="card">
+            <div class="card-head"><div><div class="eyebrow">A gentle nudge</div><h2>Today, at your pace</h2></div><span>☀️</span></div>
+            <p class="subtle">Little things count. Pick what feels good today—there’s no perfect streak to keep.</p>
+            ${state.tasks.map(taskMarkup).join("")}
+          </div>
+          <div class="card">
+            <div class="card-head"><div><div class="eyebrow">Your cozy corner</div><h2>My World</h2></div><button class="btn soft" data-goto="world">Decorate</button></div>
+            ${roomMarkup()}
+            <div class="room-item-row"><span class="chip">☁️ Soft morning</span><span class="chip">${state.owned.length} items collected</span></div>
+          </div>
+        </div>
+        <div class="grid two-col section">
+          <div class="card">
+            <div class="card-head"><div><div class="eyebrow">Coming up</div><h2>Your plans</h2></div><button class="btn outline" data-goto="life">View planner</button></div>
+            ${activePlans.length ? activePlans.map(p => `<div class="plan-row"><div class="plan-date"><b>${p.date === "Today" ? "12" : "13"}</b>${esc(p.date)}</div><div><strong>${esc(p.title)}</strong><div class="subtle">${esc(p.time)}</div></div></div>`).join("") : `<div class="empty">A blank day can be a lovely plan, too.</div>`}
+          </div>
+          <div class="card">
+            <div class="eyebrow">Your choices</div><h2>What matters to you</h2>
+            <p class="subtle">Your interests can change whenever you do.</p>
+            <div class="category-grid">${state.categories.map(c => `<span class="chip">${esc(c)}</span>`).join("") || `<span class="chip">Still figuring it out</span>`}</div>
+          </div>
+        </div>`;
+    }
+    function lifePage() {
+      return `
+        <div class="eyebrow">Your practical, personal space</div><h1>My Life</h1>
+        <p class="subtle">Make plans that fit your life—not someone else’s checklist.</p>
+        <div class="grid two-col section">
+          <div class="card">
+            <div class="card-head"><div><div class="eyebrow">Personal planner</div><h2>Things to look forward to</h2></div><span>🗓️</span></div>
+            ${state.plans.length ? state.plans.map((p, i) => `<div class="plan-row"><div class="plan-date"><b>${i + 12}</b>${esc(p.date)}</div><div style="flex:1"><strong>${esc(p.title)}</strong><div class="subtle">${esc(p.time)}</div></div><button class="btn outline" data-action="delete-plan" data-index="${i}" aria-label="Remove plan">×</button></div>`).join("") : `<div class="empty">No plans yet. Add something small to look forward to.</div>`}
+            <form id="planForm" class="form-row"><input class="field" name="title" placeholder="Add a plan…" required maxlength="70"><button class="btn" type="submit">Add</button></form>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><div class="eyebrow">Daily activity</div><h2>Small steps, your way</h2></div><span>🌿</span></div>
+            ${state.tasks.map(taskMarkup).join("")}
+            <p class="footer-note">Coins are capped at 40 per day in this demo. Journal entries and personal disclosures never earn coins.</p>
+          </div>
+        </div>
+        <div class="grid two-col section">
+          <div class="card">
+            <div class="eyebrow">Private by default</div><h2>A note to yourself</h2>
+            <p class="subtle">This reflection stays in this browser in this prototype. It does not earn coins.</p>
+            <textarea id="journal" class="field" placeholder="What would you like to remember about today?">${esc(state.journal)}</textarea>
+            <div style="margin-top:10px"><button class="btn soft" data-action="save-journal">Save reflection</button></div>
+          </div>
+          <div class="card">
+            <div class="eyebrow">A flexible life</div><h2>Your focus can change</h2>
+            <p class="subtle">Choose the areas you want to make room for right now. You can switch these any time.</p>
+            <div class="category-grid">${categories.map(c => `<button class="category ${state.categories.includes(c) ? "selected" : ""}" data-action="category" data-category="${esc(c)}">${state.categories.includes(c) ? "✓ " : ""}${esc(c)}</button>`).join("")}</div>
+          </div>
+        </div>`;
+    }
+    function worldPage() {
+      return `
+        <div class="eyebrow">A little world that feels like you</div><h1>My World</h1>
+        <p class="subtle">Your cozy room is yours to grow—one little treasure at a time.</p>
+        <div class="grid two-col section">
+          <div class="card"><div class="card-head"><div><div class="eyebrow">Room one</div><h2>A place to exhale</h2></div><span>🏡</span></div>${roomMarkup()}
+            <div class="room-item-row">${state.owned.length ? state.owned.map(id => `<span class="chip">${catalog.find(x => x.id === id)?.art || "✨"} ${esc(catalog.find(x => x.id === id)?.name || id)}</span>`).join("") : `<span class="chip">Your first treasures are waiting</span>`}</div>
+          </div>
+          <div class="card">
+            <div class="eyebrow">Your collection</div><h2>Decor shop</h2><p class="subtle">Earn coins by showing up for yourself, then make this space your own.</p>
+            <div class="notice">🟡 ${state.coins.toLocaleString("id-ID")} LIFE COINS · Virtual decor is just for fun. No cash value.</div>
+          </div>
+        </div>
+        <div class="section"><div class="card-head"><div><div class="eyebrow">Little things for your home</div><h2>Choose what feels like you</h2></div></div>
+          <div class="store-grid">${catalog.map(item => {
+            const owned = state.owned.includes(item.id);
+            return `<div class="store-item"><div class="item-art">${item.art}</div><strong>${esc(item.name)}</strong><p>${esc(item.desc)}</p><button class="btn ${owned ? "soft" : ""}" data-action="buy-item" data-id="${item.id}" ${owned ? "disabled" : ""}>${owned ? "In your home" : `🟡 ${item.price} coins`}</button></div>`;
+          }).join("")}</div>
+        </div>`;
+    }
+    const vouchers = [
+      { id: "coffee", brand: "A little coffee treat", type: "Coffee & food", art: "☕", cost: 80, terms: "Demo reward · Example only" },
+      { id: "wellness", brand: "Wellness class pass", type: "Health & wellness", art: "🧘", cost: 120, terms: "Demo reward · Example only" },
+      { id: "stationery", brand: "Happy pages stationery", type: "Stationery", art: "📒", cost: 100, terms: "Demo reward · Example only" }
+    ];
+    function rewardsPage() {
+      const history = state.transactions.slice(0, 6);
+      return `
+        <div class="eyebrow">Small celebrations, thoughtfully earned</div><h1>Rewards</h1>
+        <p class="subtle">Explore virtual decor and sample real-world reward ideas. Real offers are not connected in this demo.</p>
+        <div class="grid three-col section">
+          <div class="card stat"><div class="stat-icon">🟡</div><div><strong>${state.coins.toLocaleString("id-ID")}</strong><small>Available coins</small></div></div>
+          <div class="card stat"><div class="stat-icon">🎁</div><div><strong>${state.redeemed.length}</strong><small>Demo redemptions</small></div></div>
+          <div class="card stat"><div class="stat-icon">🌱</div><div><strong>${Math.max(0, 40 - earnedToday())}</strong><small>Coins available to earn today</small></div></div>
+        </div>
+        <div class="grid two-col section">
+          <div class="card"><div class="eyebrow">Brand voucher ideas</div><h2>A little something nice</h2>
+            <p class="subtle">These examples are simulated. No brand partnership or voucher code is active.</p>
+            ${vouchers.map(v => {
+              const used = state.redeemed.includes(v.id);
+              return `<div class="voucher"><div class="voucher-logo">${v.art}</div><div class="voucher-info"><strong>${esc(v.brand)}</strong><small>${esc(v.type)} · ${esc(v.terms)}</small></div><button class="btn ${used ? "soft" : ""}" data-action="redeem" data-id="${v.id}" ${used ? "disabled" : ""}>${used ? "Redeemed" : `🟡 ${v.cost}`}</button></div>`;
+            }).join("")}
+          </div>
+          <div class="card"><div class="eyebrow">Your coin story</div><h2>Recent activity</h2>
+            ${history.length ? history.map(t => `<div class="plan-row"><div class="plan-date">${t.amount > 0 ? "＋" : "−"}${Math.abs(t.amount)}</div><div><strong>${esc(t.label)}</strong><div class="subtle">${esc(t.date)}</div></div></div>`).join("") : `<div class="empty">Your coin story starts with your next little win.</div>`}
+          </div>
+        </div>
+        <p class="footer-note">In a real product, rewards, funding, redemption terms, expiry dates, and partner reporting need secure server-side handling. Brand partners should receive aggregated campaign data only.</p>`;
+    }
+    function rupiah(value) { return "Rp" + Number(value || 0).toLocaleString("id-ID"); }
+    function profilePage() {
+      const m = state.model;
+      const revenue = Number(m.subscribers) * Number(m.subscription) + Number(m.campaigns) + Number(m.items) + Number(m.affiliate);
+      return `
+        <div class="eyebrow">Your space, your settings</div><h1>Profile</h1>
+        <p class="subtle">Your choices belong to you. You can change your interests whenever life shifts.</p>
+        <div class="grid two-col section">
+          <div class="card">
+            <div class="eyebrow">Your life categories</div><h2>What’s on your mind?</h2>
+            <p class="subtle">Select any number. There is no required life path.</p>
+            <div class="category-grid">${categories.map(c => `<button class="category ${state.categories.includes(c) ? "selected" : ""}" data-action="category" data-category="${esc(c)}">${state.categories.includes(c) ? "✓ " : ""}${esc(c)}</button>`).join("")}</div>
+          </div>
+          <div class="card">
+            <div class="eyebrow">Privacy & account</div><h2>Your trust matters</h2>
+            <div class="notice">🔒 Journals, reflections, and financial details are private by default in the product vision.</div>
+            <hr class="muted-line">
+            <p class="subtle">This prototype stores demo data in local browser storage only. It has no login, cloud backup, or real account deletion.</p>
+            <button class="btn outline" data-action="reset">Reset demo data</button>
+          </div>
+        </div>
+        <div class="card section">
+          <div class="card-head"><div><div class="eyebrow">Editable assumptions · monthly</div><h2>Business model sandbox</h2></div><span>🇮🇩</span></div>
+          <p class="subtle">Illustrative scenario only—not a forecast. Voucher face value is not counted as platform revenue.</p>
+          <div class="grid three-col">
+            ${modelField("Monthly active users", "users", m.users)}
+            ${modelField("Subscribers", "subscribers", m.subscribers)}
+            ${modelField("Subscription price / month (Rp)", "subscription", m.subscription)}
+            ${modelField("Brand campaign fees (Rp)", "campaigns", m.campaigns)}
+            ${modelField("Virtual item sales (Rp)", "items", m.items)}
+            ${modelField("Affiliate revenue (Rp)", "affiliate", m.affiliate)}
+            ${modelField("Operating expenses (Rp)", "expenses", m.expenses)}
+          </div>
+          <hr class="muted-line">
+          <div class="grid three-col">
+            <div class="stat"><div class="stat-icon">👥</div><div><strong>${Number(m.users).toLocaleString("id-ID")}</strong><small>Monthly active users</small></div></div>
+            <div class="stat"><div class="stat-icon">📈</div><div><strong>${rupiah(revenue)}</strong><small>Illustrative monthly revenue</small></div></div>
+            <div class="stat"><div class="stat-icon">🌿</div><div><strong>${rupiah(revenue - Number(m.expenses))}</strong><small>Illustrative operating result</small></div></div>
+          </div>
+        </div>
+        <p class="footer-note">Before launch, review applicable privacy, consumer-protection, electronic-system, tax, and rewards regulations for each market.</p>`;
+    }
+    function modelField(label, key, value) {
+      return `<label class="subtle">${label}<input class="field model-input" data-key="${key}" type="number" min="0" value="${Number(value)}" style="display:block;margin-top:7px"></label>`;
+    }
+    function render() {
+      document.getElementById("coinBalance").textContent = state.coins.toLocaleString("id-ID");
+      const pages = { home: homePage, life: lifePage, world: worldPage, rewards: rewardsPage, profile: profilePage };
+      view.innerHTML = (pages[state.page] || homePage)();
+    }
+
+    document.getElementById("nav").addEventListener("click", e => {
+      const button = e.target.closest("[data-page]");
+      if (button) navTo(button.dataset.page);
+    });
+    document.addEventListener("click", e => {
+      const goto = e.target.closest("[data-goto]");
+      if (goto) return navTo(goto.dataset.goto);
+      const btn = e.target.closest("[data-action]");
+      if (!btn) return;
+      const { action, id } = btn.dataset;
+      if (action === "task") {
+        const key = todayKey + ":" + id;
+        if (!state.completed[key]) {
+          state.completed[key] = true;
+          const task = state.tasks.find(t => t.id === id);
+          earn(task?.title || "Daily activity", task?.reward || 5);
+          save(); render();
+        }
+      }
+      if (action === "category") {
+        const name = btn.dataset.category;
+        state.categories = state.categories.includes(name) ? state.categories.filter(c => c !== name) : [...state.categories, name];
+        save(); render();
+      }
+      if (action === "buy-item") {
+        const item = catalog.find(x => x.id === id);
+        if (!item || state.owned.includes(id)) return;
+        if (state.coins < item.price) return toast("Not quite enough coins yet—your next little win is waiting 🌱");
+        state.coins -= item.price;
+        state.owned.push(id);
+        state.transactions.unshift({ label: `Decor: ${item.name}`, amount: -item.price, date: todayKey });
+        save(); render(); toast(`${item.name} is home! 🏡`);
+      }
+      if (action === "redeem") {
+        const item = vouchers.find(x => x.id === id);
+        if (!item || state.redeemed.includes(id)) return;
+        if (state.coins < item.cost) return toast("Keep going at your own pace—you’ll get there.");
+        state.coins -= item.cost;
+        state.redeemed.push(id);
+        state.transactions.unshift({ label: `Demo redemption: ${item.brand}`, amount: -item.cost, date: todayKey });
+        save(); render(); toast("Demo redemption recorded. This is not a real voucher.");
+      }
+      if (action === "delete-plan") {
+        state.plans.splice(Number(btn.dataset.index), 1); save(); render();
+      }
+      if (action === "save-journal") {
+        state.journal = document.getElementById("journal")?.value || "";
+        save(); toast("Your reflection is saved in this browser. 💛");
+      }
+      if (action === "reset") {
+        if (confirm("Reset all LIFE, BY DESIGN demo data in this browser?")) {
+          localStorage.removeItem("lifeByDesignDemo");
+          state = JSON.parse(JSON.stringify(defaultState));
+          save(); render(); toast("A fresh start 🌱");
+        }
+      }
+    });
+    document.addEventListener("submit", e => {
+      if (e.target.id !== "planForm") return;
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const title = String(data.get("title") || "").trim();
+      if (!title) return;
+      state.plans.push({ title, date: "Soon", time: "Whenever works for you" });
+      save(); render(); toast("Plan added. Something to look forward to ✨");
+    });
+    document.addEventListener("change", e => {
+      if (!e.target.matches(".model-input")) return;
+      const key = e.target.dataset.key;
+      state.model[key] = Math.max(0, Number(e.target.value) || 0);
+      save(); render();
+    });
+
+    render();
+    save();
+  </script>
+</body>
+</html>

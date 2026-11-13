@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.fd{font-family:'Fredoka','Nunito',sans-serif}
+.chip{border:3px solid #7A5545;border-radius:16px;box-shadow:0 3px 0 #D9B8A0;cursor:pointer;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;color:#6A4A3C;background:#FFFBF4}
+.chip:active{transform:translateY(2px);box-shadow:0 1px 0 #D9B8A0}
+.chip:disabled{cursor:default}
+.wood{border:3px solid #7A5545;border-radius:16px;background:#F59A93;box-shadow:0 3px 0 #C9726C;color:#FFFBF4;text-shadow:0 1px 0 #B85C57;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;cursor:pointer}
+.wood:active{transform:translateY(2px);box-shadow:0 1px 0 #C9726C}
+.wood:disabled{background:#D9C9BC;border-color:#A8907F;box-shadow:0 3px 0 #A8907F;text-shadow:none;cursor:default}
+.pill{display:flex;align-items:center;gap:6px;height:36px;padding:0 6px;box-sizing:border-box;border-radius:18px;background:#FFFBF4;border:3px solid #7A5545;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:16px;color:#6A4A3C}
+.plus{width:22px;height:22px;box-sizing:border-box;border-radius:11px;background:#8CCB6B;border:2px solid #7A5545;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;line-height:1}
+.nav{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;height:92px;box-sizing:border-box;padding:10px 8px 14px;background:#FBF1DE;border-top:3px solid #7A5545;z-index:5}
+.tile{position:relative;width:62px;height:64px;box-sizing:border-box;border:3px solid #7A5545;border-radius:16px;background:#FFFBF4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:'Fredoka','Nunito',sans-serif;font-size:11.5px;font-weight:600;color:#6A4A3C}
+.tile.on{background:#CFE3B4}
+.tile:active{transform:translateY(2px)}
+.rdot{position:absolute;top:-9px;right:-7px;width:18px;height:18px;box-sizing:border-box;border-radius:50%;background:#F04E4E;border:2.5px solid #FFFBF4}
+.spot{position:absolute;border:0;background:transparent;padding:0;cursor:pointer;z-index:3}
+.ico{display:flex;flex-direction:column;align-items:center;gap:0;border:0;background:transparent;padding:0;cursor:pointer;font-family:'Fredoka','Nunito',sans-serif;font-size:16px;font-weight:600;color:#7A5A4A;position:relative}
+.ico span.b{width:56px;height:46px;box-sizing:border-box;border-radius:20px;background:rgba(255,251,244,0.9);display:flex;align-items:center;justify-content:center}
+.pill.big{height:44px;font-size:21px;border-color:#7A5A4A;box-shadow:inset 0 0 0 2px #FFFBF4;background:#FBF4E6}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes ping{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes pop{0%{transform:translateY(-24px);opacity:0}12%{transform:translateY(0);opacity:1}85%{opacity:1}100%{opacity:0}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #FAE2C6; font-family: 'Nunito', system-ui, sans-serif; color: #6A4A3C; overflow: hidden"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="ink" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="sticker" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="w"/><feMorphology in="w" operator="dilate" radius="2.6" result="d"/><feFlood flood-color="#FFFBF4"/><feComposite in2="d" operator="in" result="halo"/><feMerge><feMergeNode in="halo"/><feMergeNode in="w"/></feMerge></filter></defs></svg>
+<svg viewBox="0 0 390 752" width="390" height="752" role="img" aria-label="Your cozy home" style="filter:url(#ink); position: absolute; left: 0; top: 0">
+<defs><pattern id="ck" width="260" height="260" patternUnits="userSpaceOnUse"><rect width="260" height="260" fill="#F6F3DC"/><rect width="130" height="130" fill="#EEF0D0"/><rect x="130" y="130" width="130" height="130" fill="#EEF0D0"/></pattern></defs>
+<rect width="390" height="752" fill="url(#ck)"/>
+<g fill="#E6EBC6"><ellipse cx="90" cy="230" rx="14" ry="10"/><ellipse cx="270" cy="360" rx="16" ry="11"/><ellipse cx="190" cy="640" rx="16" ry="11"/><ellipse cx="320" cy="560" rx="12" ry="9"/></g>
+<g stroke="#7A5A4A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+<path d="M158 150V70C158 18 242 18 242 70V150Z" fill="#E4EEE2"/>
+<path d="M172 150V74C172 40 228 40 228 74V150Z" fill="#F3F8F0" stroke-width="2.4"/>
+<rect x="14" y="262" width="100" height="92" rx="10" fill="#B88A5F"/>
+<rect x="14" y="262" width="100" height="16" rx="8" fill="#C99B6C"/>
+<rect x="14" y="358" width="100" height="116" rx="10" fill="#B88A5F"/>
+<rect x="14" y="358" width="100" height="16" rx="8" fill="#C99B6C"/>
+<rect x="14" y="478" width="100" height="118" rx="10" fill="#B88A5F"/>
+<rect x="14" y="478" width="100" height="16" rx="8" fill="#C99B6C"/>
+</g>
+<g stroke="#7A5A4A" stroke-width="3" stroke-linejoin="round">
+<rect x="22" y="288" width="34" height="26" rx="6" fill="#8E8A86"/><rect x="62" y="280" width="24" height="42" rx="8" fill="#D9B48A"/><ellipse cx="50" cy="330" rx="34" ry="12" fill="#4F4A46"/>
+<path d="M30 372A32 32 0 0 1 94 372Z" fill="#F7F2E4"/>
+<circle cx="46" cy="364" r="5" fill="#F7B8B2" stroke-width="2"/><circle cx="62" cy="356" r="5" fill="#F6D77A" stroke-width="2"/><circle cx="78" cy="365" r="5" fill="#9CC9E6" stroke-width="2"/><circle cx="58" cy="372" r="4" fill="#B7D3A0" stroke-width="2"/>
+<rect x="30" y="374" width="64" height="12" fill="#F2C75C"/><path d="M26 386H98V434Q98 446 86 446H38Q26 446 26 434Z" fill="#F2C75C"/><rect x="48" y="394" width="28" height="12" rx="4" fill="#FFF6E3" stroke-width="2.4"/>
+<path d="M28 520C28 504 96 504 96 520V556C96 568 28 568 28 556Z" fill="#E4F1F4"/>
+<ellipse cx="46" cy="534" rx="7" ry="5" fill="#E9806E" stroke-width="2"/><ellipse cx="66" cy="530" rx="7" ry="5" fill="#B7D3A0" stroke-width="2"/><ellipse cx="80" cy="540" rx="6" ry="5" fill="#F6D77A" stroke-width="2"/><ellipse cx="56" cy="548" rx="7" ry="5" fill="#F7B8B2" stroke-width="2"/>
+<rect x="32" y="498" width="64" height="10" rx="4" fill="#F7F2E4"/>
+</g>
+<g stroke="#7A5A4A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+<rect x="22" y="148" width="86" height="70" rx="12" fill="#F7B8B2"/><path d="M42 196L64 174L74 184L52 206Z" fill="#FFFBF4" stroke-width="2.6"/><path d="M42 196L40 208L52 206" fill="#FFFBF4" stroke-width="2.6"/>
+<rect x="26" y="222" width="76" height="30" rx="10" fill="#FFF6E3"/><path d="M38 234H88M38 242H74" stroke-width="2.6"/>
+</g>
+<g stroke="#7A5A4A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+<ellipse cx="215" cy="278" rx="92" ry="8" fill="rgba(122,90,74,0.12)" stroke="none"/>
+<rect x="124" y="214" width="182" height="34" rx="10" fill="#D9B48A"/>
+<rect x="132" y="244" width="166" height="40" rx="8" fill="#C99B6C"/>
+<path d="M146 284V296M282 284V296"/>
+<rect x="158" y="170" width="52" height="38" rx="6" fill="#EDEAE0"/><rect x="164" y="176" width="40" height="26" rx="3" fill="#CFE8EE" stroke-width="2.4"/><path d="M150 214H218" stroke-width="5"/>
+<rect x="238" y="188" width="42" height="28" rx="5" fill="#F7B8B2"/><path d="M259 188V216" stroke-width="2.4"/><circle cx="286" cy="200" r="11" fill="#F2C34E"/><circle cx="286" cy="200" r="5" fill="none" stroke-width="2.4"/>
+</g>
+<g stroke="#7A5A4A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+<path d="M312 240V272" fill="none" stroke-width="6"/><path d="M372 240V272" fill="none" stroke-width="6"/>
+<rect x="296" y="184" width="90" height="62" rx="10" fill="#F2A65A" transform="rotate(-3 341 215)"/>
+<path d="M308 198H372M308 232H372" stroke="#FFFBF4" stroke-width="2" opacity="0.7" transform="rotate(-3 341 215)"/>
+<ellipse cx="354" cy="320" rx="30" ry="7" fill="rgba(122,90,74,0.12)" stroke="none"/>
+<path d="M326 296L344 270H378L370 300Z" fill="#B9DE86"/><path d="M332 270L340 330M376 270L372 330M320 330L326 360M372 332L378 360" fill="none"/>
+<rect x="322" y="296" width="52" height="16" rx="5" fill="#9CCB6B"/>
+<rect x="306" y="410" width="80" height="56" rx="8" fill="#F1D9A8"/><path d="M312 466V484M380 466V484"/>
+<ellipse cx="326" cy="420" rx="16" ry="9" fill="#F7B8B2"/><ellipse cx="364" cy="418" rx="18" ry="9" fill="#FFF6E3"/>
+<path d="M334 430L378 448L386 430Z" fill="#DCE8F2" stroke-width="2.4"/>
+</g>
+<g stroke="#7A5A4A" stroke-width="3" stroke-linejoin="round">
+<ellipse cx="222" cy="336" rx="22" ry="14" fill="#FFFBF4"/><circle cx="244" cy="322" r="13" fill="#FFFBF4"/><circle cx="237" cy="311" r="5" fill="#3A2F2A"/><circle cx="251" cy="311" r="5" fill="#3A2F2A"/>
+<ellipse cx="204" cy="346" rx="6" ry="8" fill="#3A2F2A"/><ellipse cx="236" cy="347" rx="6" ry="8" fill="#3A2F2A"/><path d="M226 332C236 330 246 336 248 346" fill="none" stroke="#9CCB6B" stroke-width="5"/>
+<circle cx="241" cy="323" r="2" fill="#3A2F2A" stroke="none"/><circle cx="249" cy="323" r="2" fill="#3A2F2A" stroke="none"/><ellipse cx="245" cy="328" rx="3" ry="2" fill="#3A2F2A" stroke="none"/>
+<path d="M124 420C124 396 150 392 164 400C176 410 168 438 150 440C132 442 124 434 124 420Z" fill="#FFFBF4"/>
+<path d="M130 396L126 376L142 388Z" fill="#FFFBF4"/><path d="M160 394L168 376L172 396Z" fill="#FFFBF4"/>
+<circle cx="140" cy="414" r="2.6" fill="#3A2F2A" stroke="none"/><circle cx="158" cy="414" r="2.6" fill="#3A2F2A" stroke="none"/><path d="M146 420Q149 424 152 420" fill="none" stroke-width="2"/>
+<path d="M166 430C180 430 186 440 180 448" fill="none" stroke-width="5"/><path d="M130 424C124 432 128 442 136 444" fill="none" stroke="#B9A89A" stroke-width="7" stroke-linecap="round" opacity="0.6"/>
+</g>
+<g stroke="#7A5A4A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+<circle cx="150" cy="552" r="26" fill="#F1D9A8"/><circle cx="150" cy="552" r="18" fill="none" stroke-width="2.4"/><path d="M132 552H168M150 534V570" stroke-width="2"/>
+<ellipse cx="150" cy="590" rx="30" ry="10" fill="#F1D9A8"/><path d="M126 592V610M174 592V610" fill="none"/>
+<rect x="118" y="636" width="176" height="40" rx="10" fill="#D9B48A"/><rect x="126" y="672" width="160" height="46" rx="8" fill="#C99B6C"/><path d="M138 718V732M274 718V732"/>
+<path d="M146 636C146 606 196 606 196 636Z" fill="#F4D9A8"/><path d="M158 626Q171 614 184 626" fill="none" stroke-width="2.4"/>
+<path d="M214 636C214 610 260 610 260 636Z" fill="#E8A860"/><path d="M226 624L232 614M242 624L248 614" stroke-width="2.4"/>
+<rect x="268" y="596" width="22" height="40" rx="6" fill="#FFFBF4"/><rect x="270" y="610" width="18" height="24" rx="4" fill="#B9855F" stroke="none"/><path d="M284 596L296 576" stroke="#F28B82" stroke-width="5"/>
+<path d="M310 640V540C310 498 380 498 380 540V640" fill="none" stroke-width="12"/><path d="M310 640V540C310 498 380 498 380 540V640" fill="none" stroke="#FFFBF4" stroke-width="6"/>
+<path d="M318 640V542C318 512 372 512 372 542V640Z" fill="#F9C4BF" stroke="none" opacity="0.8"/>
+</g>
+<g stroke="#7A5A4A" stroke-width="2" fill="#F7B8B2"><circle cx="314" cy="548" r="7"/><circle cx="326" cy="522" r="6" fill="#FFFBF4"/><circle cx="345" cy="512" r="7" fill="#F6DF8E"/><circle cx="364" cy="522" r="6" fill="#F7B8B2"/><circle cx="376" cy="548" r="7" fill="#FFFBF4"/></g>
+<g fill="#F04E4E" stroke="#FFFBF4" stroke-width="2.5"><circle cx="100" cy="156" r="10"/><circle cx="102" cy="222" r="10"/></g>
+</svg>
+<div class="fd" style="position: absolute; left: 306px; top: 200px; width: 76px; text-align: center; font-size: 15px; font-weight: 600; z-index: 2; pointer-events: none; transform: rotate(-3deg)">Bazaar</div>
+<sc-for list="{{spots}}" as="s" hint-placeholder-count="5">
+<button type="button" class="spot" onClick="{{s.tap}}" aria-label="{{s.name}}" style="{{s.pos}}">
+<span style="{{s.markStyle}}">
+<span class="fd" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; box-sizing: border-box; border-radius: 14px; background: #FFFBF4; border: 3px solid #7A5545; color: #F04E4E; font-size: 16px; font-weight: 700; line-height: 1; opacity: {{s.markO}}; animation: ping 1.2s ease-in-out infinite">!</span>
+</span>
+</button>
+</sc-for>
+<div style="position: absolute; left: 0; top: 0; width: 48px; height: 67px; z-index: 4; pointer-events: none; transform: {{avT}}; transition: transform 0.7s ease-in-out">
+<svg viewBox="0 0 60 84" width="48" height="67" aria-hidden="true" style="filter:url(#sticker)"><g style="animation: bob 1.6s ease-in-out infinite"><ellipse cx="30" cy="80" rx="16" ry="3.4" fill="rgba(122,85,69,0.18)"/><path d="M5 30C3 10 16 4 30 4C44 4 57 10 55 30C57 44 56 52 50 56L10 56C4 52 3 44 5 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><rect x="23" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><rect x="31.5" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="25.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><ellipse cx="34.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><rect x="18" y="52" width="24" height="17" rx="7" fill="#F6D77A" stroke="#7A5545" stroke-width="2.2"/><path d="M24 52L30 59L36 52Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.6" stroke-linejoin="round"/><circle cx="15" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><circle cx="45" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="30" cy="31" rx="24" ry="22" fill="#FDE9DC" stroke="#7A5545" stroke-width="2.4"/><path d="M6 30C6 12 18 6 30 6C42 6 54 12 54 30C48 22 42 18 36 18C32 24 18 22 6 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 10Q22 14 24 18M37 10Q39 14 37 17" fill="none" stroke="#7FB5C9" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="21" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><ellipse cx="39" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><circle cx="21.8" cy="34.6" r="0.9" fill="#FFFFFF"/><circle cx="39.8" cy="34.6" r="0.9" fill="#FFFFFF"/><ellipse cx="13.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><ellipse cx="46.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><path d="M28 41.5Q30 43.5 32 41.5" fill="none" stroke="#7A5545" stroke-width="1.4" stroke-linecap="round"/><path d="M8 15C16 6 44 6 52 15" fill="none" stroke="#7FB070" stroke-width="3" stroke-linecap="round"/><g stroke="#7A5545" stroke-width="1.8"><circle cx="15" cy="11" r="5" fill="#F6B24A"/><circle cx="30" cy="7.5" r="5.5" fill="#F6B24A"/><circle cx="45" cy="11" r="5" fill="#F6B24A"/></g><g fill="#FFF3C4"><circle cx="15" cy="11" r="1.8"/><circle cx="30" cy="7.5" r="2"/><circle cx="45" cy="11" r="1.8"/></g></g></svg>
+</div>
+<div style="position: absolute; left: 62px; right: 10px; top: 52px; z-index: 6; display: flex; gap: 8px">
+<div class="pill big" style="flex: 1.5; justify-content: center; padding: 0 8px 0 24px"><span>{{coins}}</span></div>
+<div class="pill big" style="flex: 1; justify-content: center; position: relative; padding: 0 8px 0 24px"><span style="position: absolute; left: -10px; top: -6px; width: 34px; height: 34px; border-radius: 50%; background: #F7B8B2; border: 3px solid #7A5A4A; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C3 14 4 5 9 5C11 5 12 7 12 7C12 7 13 5 15 5C20 5 21 14 12 21Z" fill="#FFFBF4" stroke="#7A5A4A" stroke-width="2" stroke-linejoin="round"/></svg></span>7</div>
+<div class="pill big" style="flex: 1; justify-content: center; position: relative; padding: 0 28px 0 24px"><span style="position: absolute; left: -10px; top: -6px; width: 34px; height: 34px; border-radius: 50%; background: #CFE8EE; border: 3px solid #7A5A4A; display: flex; align-items: center; justify-content: center; font-size: 12px">Lv</span>{{level}}<a href="Quests.dc.html" class="plus" aria-label="Earn more coins with quests" style="position: absolute; right: -8px; top: 4px; width: 30px; height: 30px; border-radius: 15px; font-size: 24px; border-width: 3px">+</a></div>
+</div>
+<div style="position: absolute; left: 6px; top: 36px; z-index: 7; width: 66px; height: 66px; box-sizing: border-box; border-radius: 50%; border: 4px solid #8FB4CC; background: #EFE9DA; overflow: hidden"><svg viewBox="4 2 52 52" width="58" height="58" aria-hidden="true" style="margin: -2px 0 0 -2px"><ellipse cx="30" cy="80" rx="16" ry="3.4" fill="rgba(122,85,69,0.18)"/><path d="M5 30C3 10 16 4 30 4C44 4 57 10 55 30C57 44 56 52 50 56L10 56C4 52 3 44 5 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><rect x="23" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><rect x="31.5" y="66" width="5.5" height="10" rx="2.7" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="25.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><ellipse cx="34.5" cy="76" rx="6" ry="3.4" fill="#FFF1C4" stroke="#7A5545" stroke-width="2"/><rect x="18" y="52" width="24" height="17" rx="7" fill="#F6D77A" stroke="#7A5545" stroke-width="2.2"/><path d="M24 52L30 59L36 52Z" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.6" stroke-linejoin="round"/><circle cx="15" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><circle cx="45" cy="62" r="4" fill="#FBE3D3" stroke="#7A5545" stroke-width="2"/><ellipse cx="30" cy="31" rx="24" ry="22" fill="#FDE9DC" stroke="#7A5545" stroke-width="2.4"/><path d="M6 30C6 12 18 6 30 6C42 6 54 12 54 30C48 22 42 18 36 18C32 24 18 22 6 30Z" fill="#A9D8E8" stroke="#7A5545" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 10Q22 14 24 18M37 10Q39 14 37 17" fill="none" stroke="#7FB5C9" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="21" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><ellipse cx="39" cy="36" rx="2.4" ry="3.2" fill="#5A3E36"/><circle cx="21.8" cy="34.6" r="0.9" fill="#FFFFFF"/><circle cx="39.8" cy="34.6" r="0.9" fill="#FFFFFF"/><ellipse cx="13.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><ellipse cx="46.5" cy="41" rx="3.8" ry="2.4" fill="#F7A9A4" opacity="0.6"/><path d="M28 41.5Q30 43.5 32 41.5" fill="none" stroke="#7A5545" stroke-width="1.4" stroke-linecap="round"/><path d="M8 15C16 6 44 6 52 15" fill="none" stroke="#7FB070" stroke-width="3" stroke-linecap="round"/><g stroke="#7A5545" stroke-width="1.8"><circle cx="15" cy="11" r="5" fill="#F6B24A"/><circle cx="30" cy="7.5" r="5.5" fill="#F6B24A"/><circle cx="45" cy="11" r="5" fill="#F6B24A"/></g><g fill="#FFF3C4"><circle cx="15" cy="11" r="1.8"/><circle cx="30" cy="7.5" r="2"/><circle cx="45" cy="11" r="1.8"/></g></svg></div>
+<div style="position: absolute; left: 12px; right: 12px; top: 104px; z-index: 6; display: flex; justify-content: space-between">
+<button type="button" class="ico" aria-label="Archive"><span class="b"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9C4 5 8 4 12 7C16 4 20 5 20 9V17H4Z" fill="#F7A59C" stroke="#7A5A4A" stroke-width="1.8" stroke-linejoin="round"/></svg></span>Archive</button>
+<button type="button" class="ico" aria-label="Settings"><span class="b"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L14 5H17L18 8L21 10L20 13L21 16L18 18L17 21H14L12 22L10 21H7L6 18L3 16L4 13L3 10L6 8L7 5H10Z" fill="#F7A59C" stroke="#7A5A4A" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="#FFFBF4"/></svg></span>Settings</button>
+<button type="button" class="ico" onClick="{{openChest}}" disabled="{{chestOff}}" aria-label="Open the gift chest" style="opacity: {{chestFade}}"><span class="b"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2" fill="#F7A59C" stroke="#7A5A4A" stroke-width="1.8"/><rect x="3" y="7" width="18" height="4" rx="1.5" fill="#F9C4BF" stroke="#7A5A4A" stroke-width="1.8"/><path d="M12 7V20M12 7C9 2 5 6 9 7M12 7C15 2 19 6 15 7" fill="none" stroke="#7A5A4A" stroke-width="1.8"/></svg></span>Gift<sc-if value="{{giftDot}}" hint-placeholder-val="{{false}}"><span class="rdot" style="top: -2px; right: -2px"></span></sc-if></button>
+<button type="button" class="ico" aria-label="Friends"><span class="b"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="4" fill="#F7A59C" stroke="#7A5A4A" stroke-width="1.8"/><circle cx="16.5" cy="10" r="3.4" fill="#F7A59C" stroke="#7A5A4A" stroke-width="1.8"/><path d="M3 20C3 14 15 14 15 20ZM13 20C13 16 21 16 21 20Z" fill="#F7A59C" stroke="#7A5A4A" stroke-width="1.8" stroke-linejoin="round"/></svg></span>Friends</button>
+</div>
+<div style="position: absolute; left: 12px; right: 12px; bottom: 104px; z-index: 6; box-sizing: border-box; padding: 10px 12px; border-radius: 20px; background: #FFFBF4; border: 3px solid #7A5545; display: flex; align-items: center; gap: 10px">
+<div style="flex: 1; min-width: 0">
+<div class="fd" style="font-size: 16px; font-weight: 600; line-height: 1.15">{{card.title}}</div>
+<div style="margin-top: 2px; font-size: 12.5px; font-weight: 700; color: #8A6B5A; line-height: 1.3">{{card.text}}</div>
+</div>
+<sc-if value="{{card.canDo}}" hint-placeholder-val="{{true}}">
+<button type="button" class="wood" onClick="{{doIt}}" style="height: 40px; padding: 0 14px; font-size: 14px; flex-shrink: 0">Do it +{{card.coins}}</button>
+</sc-if>
+<sc-if value="{{card.isDone}}" hint-placeholder-val="{{false}}">
+<span class="fd" style="padding: 6px 10px; border-radius: 12px; background: #CFE3B4; border: 2.5px solid #7A5545; font-size: 13px; font-weight: 600; flex-shrink: 0">Done</span>
+</sc-if>
+<sc-if value="{{card.isGate}}" hint-placeholder-val="{{false}}">
+<a href="Bazaar.dc.html" class="wood" style="display: flex; align-items: center; height: 40px; padding: 0 14px; font-size: 14px; flex-shrink: 0">Enter</a>
+</sc-if>
+</div>
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 20px; right: 20px; top: 180px; z-index: 8; display: flex; justify-content: center; pointer-events: none; animation: pop 2s ease-out forwards">
+<span class="fd" style="padding: 8px 14px; border-radius: 16px; border: 3px solid #7A5545; background: #F9C4BF; font-size: 15px; font-weight: 600">{{toast}}</span>
+</div>
+</sc-if>
+<nav class="nav"><a href="Home.dc.html" class="tile on"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12L12 4L20 12V20H4Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="6" fill="#FFFBF4" stroke="#7A5545" stroke-width="1.8"/></svg>World</a><a href="Quests.dc.html" class="tile"><span class="rdot"></span><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4" stroke="#7A5545" stroke-width="2.4" stroke-linecap="round"/><path d="M6 5H18L15.5 9L18 13H6Z" fill="#F6CF7A" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/></svg>Quests</a><a href="Decorate.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="11" rx="4" fill="#F7B3AD" stroke="#7A5545" stroke-width="2"/><rect x="3" y="12" width="18" height="7" rx="3" fill="#F7B3AD" stroke="#7A5545" stroke-width="2"/><path d="M6 19V21M18 19V21" stroke="#7A5545" stroke-width="2" stroke-linecap="round"/></svg>Decorate</a><a href="Bazaar.dc.html" class="tile"><span class="rdot"></span><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10L5 4H19L21 10Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M4 10V20H20V10" fill="#FFF1D6" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><rect x="9" y="13" width="6" height="7" fill="#CFE3B4" stroke="#7A5545" stroke-width="1.8"/></svg>Bazaar</a><a href="Shop.dc.html" class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8H19L18 20H6Z" fill="#F7B3AD" stroke="#7A5545" stroke-width="2" stroke-linejoin="round"/><path d="M9 8A3 3 0 0115 8" fill="none" stroke="#7A5545" stroke-width="2" stroke-linecap="round"/></svg>Shop</a></nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { spot: null, done: { desk: false, plant: true, arch: false, bed: false }, coins: 245, xp: 60, level: 3, chest: false, toast: null, ax: 205, ay: 480 };
+}
+spots() {
+return [
+{ id: 'desk', name: 'Budget desk', ax: 215, ay: 322, pos: 'left: 124px; top: 166px; width: 182px; height: 130px', mark: 'position: absolute; left: 76px; top: -30px', coins: 10, xp: 15, quest: true, title: 'Weekly budget check-in', text: 'Log this week\'s spending at your desk.' },
+{ id: 'plant', name: 'Savings jar machine', ax: 160, ay: 470, pos: 'left: 14px; top: 358px; width: 100px; height: 116px', mark: 'position: absolute; left: 36px; top: -30px', coins: 10, xp: 15, quest: true, title: 'Feed the savings jar', text: 'Move a small amount into your goal pot.' },
+{ id: 'door', name: 'Bazaar sign', ax: 336, ay: 296, pos: 'left: 296px; top: 180px; width: 90px; height: 100px', mark: 'position: absolute; left: 30px; top: -22px', coins: 0, xp: 0, quest: false, title: 'The Bazaar is open', text: 'Collect stamps from this season\'s booths.' },
+{ id: 'arch', name: 'Wedding corner', ax: 270, ay: 600, pos: 'left: 306px; top: 500px; width: 80px; height: 140px', mark: 'position: absolute; left: 26px; top: -24px', coins: 15, xp: 20, quest: true, title: 'Plan the big day', text: 'Shortlist one vendor you like.' },
+{ id: 'bed', name: 'Green chair', ax: 300, ay: 412, pos: 'left: 318px; top: 266px; width: 70px; height: 96px', mark: 'position: absolute; left: 20px; top: -26px', coins: 10, xp: 10, quest: true, title: 'Rest in your chair', text: 'Take a no-guilt break. Your streak stays safe.' }
+];
+}
+tap(id) {
+const sp = this.spots().filter((x) => x.id === id)[0];
+this.setState({ spot: id, ax: sp.ax, ay: sp.ay });
+}
+doIt() {
+const s = this.state;
+const sp = this.spots().filter((x) => x.id === s.spot)[0];
+if (!sp || !sp.quest || s.done[sp.id]) return;
+const done = Object.assign({}, s.done);
+done[sp.id] = true;
+let xp = s.xp + sp.xp;
+let level = s.level;
+let toast = '+' + sp.coins + ' coins';
+if (xp >= 100) { xp -= 100; level += 1; toast = 'Level up! Lv' + level; }
+this.setState({ done: done, coins: s.coins + sp.coins, xp: xp, level: level, toast: toast });
+setTimeout(() => this.setState({ toast: null }), 2000);
+}
+openChest() {
+const s = this.state;
+this.setState({ chest: true, coins: s.coins + 25, toast: 'Gift: +25 coins' });
+setTimeout(() => this.setState({ toast: null }), 2000);
+}
+renderVals() {
+const s = this.state;
+const list = this.spots();
+const count = list.filter((x) => x.quest && s.done[x.id]).length;
+const cur = list.filter((x) => x.id === s.spot)[0];
+let card = { title: 'Quests today: ' + Math.min(count, 3) + '/3', text: 'Tap a glowing ! bubble. Finish 3 to open your gift.', canDo: false, isDone: false, isGate: false, coins: 0 };
+if (cur) {
+card = { title: cur.title, text: cur.text, canDo: cur.quest && !s.done[cur.id], isDone: cur.quest && !!s.done[cur.id], isGate: !cur.quest, coins: cur.coins };
+}
+const ready = count >= 3 && !s.chest;
+return {
+coins: s.coins,
+level: s.level,
+xpW: s.xp + '%',
+card: card,
+spots: list.map((x) => ({
+name: x.name,
+pos: x.pos,
+markStyle: x.mark,
+markO: x.quest && s.done[x.id] ? 0 : 1,
+tap: () => this.tap(x.id)
+})),
+avT: 'translate(' + (s.ax - 24) + 'px, ' + (s.ay - 64) + 'px)',
+doIt: () => this.doIt(),
+openChest: () => this.openChest(),
+chestOff: !ready,
+chestFade: ready ? 1 : 0.55,
+giftDot: ready,
+hasToast: !!s.toast,
+toast: s.toast || ''
+};
+}
+}
+</script>
+</body>
+</html>
