@@ -1,0 +1,197 @@
+/* Portrait, game-first My World layout for phones and small screens. */
+.mobile-room-active .page-content {
+  width: 100%;
+  max-width: 720px;
+  padding: 8px 10px 150px;
+}
+.mobile-room-active #app > .eyebrow,
+.mobile-room-active #app > h1,
+.mobile-room-active #app > .subtle { display: none; }
+.mobile-room-active #app > .grid.grid-2.section {
+  display: block;
+  margin: 0;
+}
+.mobile-room-active #app > .grid.grid-2.section > .card:first-child {
+  padding: 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.mobile-room-active #app > .grid.grid-2.section > .card:first-child > .card-head,
+.mobile-room-active #app > .grid.grid-2.section > .card:first-child > div:not(.room-scene) {
+  display: none;
+}
+.mobile-room-active #app > .grid.grid-2.section > .card:nth-child(2) { display: none; }
+.mobile-room-active .mobile-room-stage {
+  position: relative;
+  width: 100%;
+  height: min(69dvh, 650px);
+  min-height: 430px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 3px solid #9a7567;
+  border-radius: 18px;
+  background-color: #fff0cf;
+  background-image:
+    linear-gradient(rgba(219,187,153,.55) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(219,187,153,.55) 2px, transparent 2px),
+    linear-gradient(180deg,#f8f0d9 0 38%,#f9e5bc 38% 100%);
+  background-size: 10% 7.7%,10% 7.7%,100% 100%;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,.55),0 4px 0 #b88e7e;
+  touch-action: none;
+}
+.mobile-room-active .mobile-room-stage:before {
+  content: '♡   ✿   ♡';
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 36%;
+  padding: 3px 12px 5px;
+  border: 2px solid #aa8170;
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+  background: #ffe4d5;
+  color: #e89a91;
+  font-size: 12px;
+  letter-spacing: .22em;
+  pointer-events: none;
+}
+.mobile-room-active .mobile-room-stage:after {
+  content: '';
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(255,244,221,.18));
+}
+.mobile-room-active .room-window { left: 8%; top: 8%; width: 28%; height: 28%; }
+.mobile-room-active .room-rug { left: 25%; bottom: 8%; width: 52%; height: 13%; }
+.mobile-room-active .room-sofa { left: 34%; bottom: 17%; width: 42%; height: 20%; }
+.mobile-room-active .room-plant { right: 7%; bottom: 17%; }
+.mobile-room-active .room-lamp { left: 8%; bottom: 18%; }
+.mobile-room-active .mobile-avatar {
+  position: absolute;
+  z-index: 6;
+  width: 60px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%,-50%);
+  border: 0;
+  background: transparent;
+  font-size: 48px;
+  filter: drop-shadow(0 4px 0 rgba(112,87,75,.16));
+  transition: left .22s cubic-bezier(.2,.8,.2,1),top .22s cubic-bezier(.2,.8,.2,1);
+  animation: mobile-avatar-idle 1.7s ease-in-out infinite;
+  cursor: pointer;
+}
+.mobile-room-active .mobile-avatar.walking { animation: mobile-avatar-step .24s ease-in-out 2; }
+.mobile-room-active .mobile-furniture {
+  position: absolute;
+  z-index: 5;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transform: translate(-50%,-50%);
+  border: 2px solid #987465;
+  border-radius: 16px;
+  background: rgba(255,253,247,.88);
+  box-shadow: 0 4px 0 #c6a592,inset 0 0 0 3px rgba(255,255,255,.8);
+  font-size: 30px;
+  cursor: grab;
+  touch-action: none;
+}
+.mobile-room-active .mobile-furniture.dragging { z-index: 7; cursor: grabbing; scale: 1.1; }
+.mobile-room-active .mobile-room-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  max-width: 420px;
+  margin: 0 auto 8px;
+}
+.mobile-room-active .mobile-room-title { color: #70574b; font: 600 18px 'Playfair Display',Georgia,serif; }
+.mobile-room-active .mobile-room-coins {
+  padding: 7px 11px;
+  border: 1.5px solid #eadcae;
+  border-radius: 99px;
+  background: #fff5d9;
+  color: #70574b;
+  font-size: 11px;
+  font-weight: 700;
+}
+.mobile-room-active #app > .section:has(.store-grid) {
+  position: fixed;
+  z-index: 9;
+  right: 0;
+  bottom: calc(58px + env(safe-area-inset-bottom));
+  left: 0;
+  margin: 0;
+  padding: 8px 10px 10px;
+  border-top: 2px solid #d5ac98;
+  border-radius: 18px 18px 0 0;
+  background: rgba(255,248,233,.97);
+  box-shadow: 0 -4px 14px rgba(112,87,75,.1);
+  backdrop-filter: blur(8px);
+}
+.mobile-room-active #app > .section:has(.store-grid) > .card-head { margin: 0 0 5px; }
+.mobile-room-active #app > .section:has(.store-grid) > .card-head h2 { font-size: 14px; }
+.mobile-room-active #app > .section:has(.store-grid) .store-grid {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 2px 7px;
+  scrollbar-width: thin;
+}
+.mobile-room-active #app > .section:has(.store-grid) .store-item {
+  flex: 0 0 84px;
+  padding: 6px;
+  border: 1.5px solid #dfc7b5;
+  border-radius: 13px;
+  text-align: center;
+  box-shadow: 0 2px 0 rgba(112,87,75,.08);
+}
+.mobile-room-active #app > .section:has(.store-grid) .item-art {
+  height: 38px;
+  margin: 0 0 4px;
+  border: 0;
+  background: #fff3dc;
+  font-size: 25px;
+}
+.mobile-room-active #app > .section:has(.store-grid) .store-item strong {
+  display: block;
+  overflow: hidden;
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mobile-room-active #app > .section:has(.store-grid) .store-item p { display: none; }
+.mobile-room-active #app > .section:has(.store-grid) .store-item .btn {
+  margin-top: 5px;
+  padding: 4px 6px;
+  font-size: 8px;
+  box-shadow: none;
+}
+.mobile-room-active .topbar { height: 48px; }
+.mobile-room-active .topbar-date { display: none; }
+.mobile-room-active .page-content { padding-top: 6px; }
+@keyframes mobile-avatar-idle { 0%,100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+@keyframes mobile-avatar-step { 0%,100% { transform: translate(-50%,-50%) rotate(0); } 50% { transform: translate(-50%,-53%) rotate(7deg); } }
+@media (min-width: 701px) {
+  .mobile-room-active .mobile-room-stage { height: min(68dvh, 610px); }
+  .mobile-room-active #app > .section:has(.store-grid) {
+    position: static;
+    margin-top: 12px;
+    padding: 14px;
+    border: 2px solid #ead7c5;
+    border-radius: 18px;
+    box-shadow: none;
+  }
+  .mobile-room-active #app > .section:has(.store-grid) .store-item { flex-basis: 110px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-room-active .mobile-avatar { animation: none !important; }
+}
